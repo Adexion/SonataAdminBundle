@@ -18,25 +18,25 @@ file that was distributed with this source code.
     {% set visibility_class = 'sonata-search-result-' ~ (has_results ? 'show' : show_empty_boxes) %}
 
     <div class="col-lg-4 col-md-6 search-box-item {{ visibility_class }}">
-        <div class="box box-solid {{ visibility_class }}">
-            <div class="box-header with-border {{ visibility_class }}">
+        <div class="card {{ visibility_class }}">
+            <div class="card-header {{ visibility_class }}">
                 {{ settings.icon|default('')|parse_icon }}
-                <h3 class="box-title">
+                <h3 class="card-title">
                     {% if admin.label is not empty %}
                         {{ admin.label|trans({}, admin.translationdomain) }}
                     {% endif %}
                 </h3>
 
-                <div class="box-tools pull-right">
+                <div class="card-tools float-end d-flex align-items-center gap-1">
                     {% if has_results %}
-                        <span class="badge">{{ results_count }}</span>
+                        <span class="badge bg-primary">{{ results_count }}</span>
                     {% elseif admin.hasRoute('create') and admin.hasAccess('create') %}
-                        <a href="{{ admin.generateUrl('create') }}" class="btn btn-box-tool">
+                        <a href="{{ admin.generateUrl('create') }}" class="btn btn-sm btn-outline-secondary">
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </a>
                     {% endif %}
                     {% if admin.hasRoute('list') and admin.hasAccess('list') %}
-                        <a href="{{ admin.generateUrl('list') }}" class="btn btn-box-tool">
+                        <a href="{{ admin.generateUrl('list') }}" class="btn btn-sm btn-outline-secondary">
                             <i class="fas fa-list" aria-hidden="true"></i>
                         </a>
                     {% endif %}
@@ -44,7 +44,7 @@ file that was distributed with this source code.
 
                 <div class="matches">
                     {% for name, filter in filters %}
-                        <a class="label label-primary" href="{{ admin.generateUrl('list', {'filter': {(filter.formName): {'value': term}}}) }}">
+                        <a class="badge bg-primary text-decoration-none" href="{{ admin.generateUrl('list', {'filter': {(filter.formName): {'value': term}}}) }}">
                             {% if filter.translationDomain is same as(false) %}
                                 {{ filter.label }}
                             {% else %}
@@ -55,23 +55,23 @@ file that was distributed with this source code.
                 </div>
             </div>
             {% if has_results %}
-                <div class="box-body no-padding">
-                    <ul class="nav nav-stacked sonata-search-result-list">
+                <div class="card-body p-0">
+                    <ul class="nav flex-column sonata-search-result-list">
                         {% for result in current_page_results %}
                             {% if admin.hasRoute(admin_route) and admin.hasAccess(admin_route, result) %}
-                                <li>
-                                    <a href="{{ admin.generateObjectUrl(admin_route, result) }}">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ admin.generateObjectUrl(admin_route, result) }}">
                                         {{ admin.toString(result) }}
                                     </a>
                                 </li>
                             {% else %}
-                                <li><a>{{ admin.toString(result) }}</a></li>
+                                <li class="nav-item"><span class="nav-link">{{ admin.toString(result) }}</span></li>
                             {% endif %}
                         {% endfor %}
                     </ul>
                 </div>
             {% else %}
-                <div class="box-body">
+                <div class="card-body">
                     <p>
                         <em>{{ 'no_results_found'|trans({}, 'SonataAdminBundle') }}</em>
                     </p>

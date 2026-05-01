@@ -8,30 +8,13 @@
  */
 
 /**
- * SonataAdminBundle Theme based on SB Admin v2.0
- * http://startbootstrap.com/templates/sb-admin-v2/
+ * SonataAdminBundle Theme based on AdminLTE 4 + Bootstrap 5
  */
 
 html {
   font-size: initial !important;
   min-height: 100%;
   position: relative;
-}
-
-footer {
-  background-color: #333;
-  bottom: 0;
-  height: 20px;
-  position: absolute;
-  width: 100%;
-
-  p {
-    margin: 0;
-  }
-
-  a {
-    color: #f6f6f6;
-  }
 }
 
 .logo {
@@ -54,12 +37,8 @@ footer {
   }
 }
 
-body > .header .logo {
+.brand-link .logo {
   font-family: 'Source Sans Pro', sans-serif;
-}
-
-.main-header {
-  height: 50px;
 }
 
 .open > .dropdown-menu {
@@ -71,29 +50,8 @@ body > .header .logo {
   overflow-y: auto;
 }
 
-/* Buttons */
-.btn.btn-outline {
-  background-color: transparent;
-  color: inherit;
-  transition: all 0.5s;
-}
-
-.btn.btn-primary.btn-outline:hover,
-.btn.btn-success.btn-outline:hover,
-.btn.btn-info.btn-outline:hover,
-.btn.btn-warning.btn-outline:hover,
-.btn.btn-danger.btn-outline:hover {
-  color: #fff;
-}
-
 /* navigation */
-.navbar-static-side li {
-  border-bottom: 1px solid #e7e7e7;
-}
-
 .navbar-brand {
-  padding-right: 20px;
-
   img {
     height: 28px;
     margin: 0;
@@ -102,31 +60,13 @@ body > .header .logo {
   }
 }
 
-.navbar-text .navbar-link {
-  padding: 0 10px;
-}
-
-.content-header {
-  .navbar {
-    margin-bottom: 0;
-  }
-}
-
-.right-side > .content-header {
-  padding-bottom: 0;
-}
-
 .nav-second-level li {
-  border-bottom: none !important;
-
   a {
     padding-left: 37px;
   }
 }
 
 .nav-third-level li {
-  border-bottom: none !important;
-
   a {
     padding-left: 52px;
   }
@@ -188,75 +128,15 @@ div {
   }
 }
 
-.navbar-top-links li {
-  display: inline-block;
-
-  a,
-  span {
-    min-height: 50px;
-    padding: 15px;
-  }
-}
-
 .dropdown-add .dropdown-menu > li > a {
   overflow: hidden;
   white-space: normal;
 }
 
-.navbar-top-links {
-  > p,
-  > ul {
-    float: right;
-  }
-
-  .dropdown-menu {
-    li {
-      display: block;
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      a {
-        min-height: 0;
-        padding: 3px 20px;
-
-        div {
-          white-space: normal;
-        }
-      }
-    }
-  }
-
-  .dropdown-messages,
-  .dropdown-tasks,
-  .dropdown-alerts {
-    min-width: 0;
-    width: 310px;
-  }
-
-  .dropdown-messages {
-    margin-left: 5px;
-  }
-
-  .dropdown-tasks {
-    margin-left: -59px;
-  }
-
-  .dropdown-alerts {
-    margin-left: -123px;
-  }
-
-  .dropdown-user {
-    left: auto;
-    right: 0;
-  }
-}
-
 /* breadcrumb */
 .sonata-bc .breadcrumb {
   background: inherit;
-  float: left;
+  float: start;
   margin: 0;
   padding: 0;
 
@@ -265,12 +145,7 @@ div {
   }
 }
 
-.navbar-top-links .dropdown-menu li a:hover {
-  text-decoration: none;
-}
-
-/* MEGA MENU STYLE
-********************************/
+/* MEGA MENU STYLE */
 .dropdown-menu .dropdown-menu {
   border: none !important;
   box-shadow: none !important;
@@ -283,56 +158,18 @@ div {
   min-width: 100px;
 }
 
-/* top right */
-.navbar-static-top {
-  margin-bottom: 0;
-}
-
-.skin-black .navbar .breadcrumb > li > a:hover {
-  background: #f5f5f5;
-  color: #444;
-}
-
-.skin-black .navbar .dropdown-menu > li > a:hover {
-  background-color: #f5f5f5;
-}
-
 /* sidebar menu styles */
 .sidebar-search {
   padding: 15px;
 }
 
-.sidebar-menu li.keep-open > .treeview-menu {
+.sidebar-menu li.keep-open > .nav-treeview {
   display: block !important;
   height: auto !important;
 }
 
 .arrow {
-  float: right;
-}
-
-.fa.arrow::before {
-  content: '\f104';
-}
-
-.active > a > .fa.arrow::before {
-  content: '\f107';
-}
-
-@media (width >= 768px) {
-  .navbar-static-side {
-    position: absolute;
-    width: 250px;
-    z-index: 1;
-  }
-
-  .navbar-top-links {
-    .dropdown-messages,
-    .dropdown-tasks,
-    .dropdown-alerts {
-      margin-left: auto;
-    }
-  }
+  float: end;
 }
 
 /* Admin table */
@@ -352,12 +189,12 @@ table.sonata-ba-list {
 td.sonata-ba-list-label {
   color: #565656;
   font-weight: bold;
-  text-align: right;
+  text-align: end;
   vertical-align: middle !important;
 }
 
 /* side filter */
-.box .box-header h4.box-title.filter_legend {
+.card .card-header h4.card-title.filter_legend {
   cursor: pointer;
   padding-left: 20px;
   position: relative;
@@ -394,108 +231,7 @@ form.sonata-filter-form.form-stacked {
   padding-left: 0;
 }
 
-body.fixed .sonata-list-table {
-  margin-bottom: 5px;
-  margin-left: 15px;
-  margin-right: 15px;
-  position: relative;
-}
-
-.navbar-nav.navbar-right:last-child {
-  margin-right: 0;
-}
-
 /* Overrides */
-
-/* x-editable */
-td.sonata-ba-list-field {
-  .editable {
-    cursor: pointer;
-  }
-
-  .btn.editable {
-    border-bottom: solid 1px #bbb;
-  }
-
-  .editable-empty:not(.editable-open) {
-    display: none;
-  }
-}
-
-.sonata-ba-list tr:hover .editable-empty {
-  display: inline-block;
-}
-
-.editable-pre-wrapped {
-  white-space: normal;
-}
-
-.editable-container {
-  .prev::before {
-    content: '\2190 ';
-  }
-
-  .next::before {
-    content: '\2192 ';
-  }
-}
-
-/* bootstrap */
-.input-group-addon {
-  width: auto; /* See https://github.com/sonata-project/SonataAdminBundle/issues/2950 */
-}
-
-/**
- * Make checkbox / radio label consistant with other labels
- */
-.checkbox label,
-.radio label {
-  font-weight: 700;
-}
-
-/**
- * Undo Bootstrap styling for checkboxes and radio buttons when iCheck is in use.
- */
-body.sonata-icheck .checkbox label,
-body.sonata-icheck .radio label {
-  margin-left: 0;
-  padding-left: 0;
-}
-
-/**
- * The iCheck checkboxes & radios have 0 margin by default,
- * add some space for the label text.
- */
-.checkbox div[class^='icheckbox'],
-.checkbox-inline div[class^='icheckbox'],
-.radio div[class^='iradio'],
-.radio-inline div[class^='iradio'] {
-  margin-right: 5px;
-  margin-top: -3px;
-  position: relative;
-}
-
-.form-inline .checkbox div[class^='icheckbox'],
-.form-inline .checkbox-inline div[class^='icheckbox'],
-.form-inline .radio div[class^='iradio'],
-.form-inline .radio-inline div[class^='iradio'] {
-  margin-left: 0;
-  margin-right: 5px;
-  margin-top: -3px;
-  position: relative;
-}
-
-/* Hide Delete checkbox on sonata_type_collection tables */
-.sonata-ba-field-inline-table td > div.checkbox > label > .control-label__text {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
 
 /* select2 */
 .select2-choice,
@@ -532,16 +268,12 @@ div.mosaic-box.sonata-ba-list-row-selected {
   }
 }
 
-.modal .mosaic-inner-text .icheckbox_square-blue {
-  display: none;
-}
-
-div.sonata-filters-box div.form-group {
-  div.form-group {
+div.sonata-filters-box div.mb-3 {
+  div.mb-3 {
     margin: 0;
   }
 
-  span.input-group-addon {
+  span.input-group-text {
     font-size: 13px;
     padding: 3px 10px;
   }

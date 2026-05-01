@@ -8,9 +8,6 @@
  */
 
 const SonataCore = {
-  remove_iCheck_in_flashmessage() {
-    jQuery('.read-more-state').iCheck('destroy');
-  },
   addFlashmessageListener() {
     document.querySelectorAll('.read-more-state').forEach((element) => {
       element.addEventListener('change', (event) => {
@@ -19,11 +16,11 @@ const SonataCore = {
         const labelLess = label.querySelector('.less');
 
         if (event.target.checked) {
-          labelMore.classList.add('hide');
-          labelLess.classList.remove('hide');
+          labelMore.classList.add('d-none');
+          labelLess.classList.remove('d-none');
         } else {
-          labelMore.classList.remove('hide');
-          labelLess.classList.add('hide');
+          labelMore.classList.remove('d-none');
+          labelLess.classList.add('d-none');
         }
       });
     });
@@ -31,6 +28,5 @@ const SonataCore = {
 };
 
 jQuery(() => {
-  SonataCore.remove_iCheck_in_flashmessage();
   SonataCore.addFlashmessageListener();
 });

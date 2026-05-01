@@ -20,21 +20,19 @@ import 'jquery.scrollto';
 // Only using sortable widget from jQuery UI library
 import 'jquery-ui/ui/widget';
 import 'jquery-ui/ui/widgets/sortable';
+
+// Bootstrap 5 (includes Popper.js)
 import 'bootstrap';
 
 import 'jquery-form';
 
-// Boostrap 3 JavaScript for the X-editable library
-import 'x-editable/dist/bootstrap3-editable/js/bootstrap-editable';
-
 // Full version of Select2, needed because SonataAdmin needs
 // compat dropdownCss and it only comes on the full version
 import 'select2/dist/js/select2.full';
-import 'admin-lte';
-import 'icheck';
 
-// jQuery SlimScroll is used in AdminLTE v2
-import 'jquery-slimscroll';
+// AdminLTE 4 (Bootstrap 5)
+import 'admin-lte';
+
 import 'masonry-layout';
 
 // SonataAdmin custom scripts

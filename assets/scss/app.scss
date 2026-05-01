@@ -7,9 +7,10 @@
  * file that was distributed with this source code.
  */
 
+// Bootstrap 5
 @import '~bootstrap/dist/css/bootstrap.css';
 
-// Add Font Awesome Free and the v4 compatibility layer
+// Add Font Awesome 6 Free and the v4 compatibility layer
 // this layer should only be removed when we are sure we have replaced
 // all icons to the new naming on all Sonata code
 @import '~@fortawesome/fontawesome-free/css/all.css';
@@ -25,23 +26,19 @@
 @import '~@fontsource/source-sans-pro/600-italic.css';
 @import '~@fontsource/source-sans-pro/700.css';
 
-// Basic AdminLTE styles without any plugins,
-// because they conflict with Select2 v4
-@import '~admin-lte/dist/css/alt/AdminLTE-without-plugins.css';
-@import '~icheck/skins/square/blue.css';
+// AdminLTE 4 (Bootstrap 5 compatible)
+@import '~admin-lte/dist/css/adminlte.css';
 
 // Only use sortable widget from jQuery UI library
 @import '~jquery-ui/themes/base/sortable.css';
-@import '~select2/dist/css/select2.css';
-@import '~select2-bootstrap-theme/dist/select2-bootstrap.css';
 
-// Boostrap 3 styles for the X-editable library
-@import '~x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css';
+// Select2 with Bootstrap 5 theme
+@import '~select2/dist/css/select2.css';
+@import '~select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.css';
 
 // SonataAdmin custom styles
 @import './styles';
 @import './layout';
 @import './tree';
 @import './flashmessage';
-@import './admin-lte-fas';
 @import './readmore';
