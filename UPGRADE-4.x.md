@@ -1,7 +1,7 @@
 UPGRADE 4.x
 ===========
 
-UPGRADE FROM 4.42 to 4.43
+UPGRADE FROM 4.42 (Unreleased — Bootstrap 5 frontend upgrade)
 =========================
 
 ## Frontend — Bootstrap 5 + AdminLTE 4

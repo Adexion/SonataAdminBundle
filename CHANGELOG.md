@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [4.43.0](https://github.com/sonata-project/SonataAdminBundle/compare/4.42.0...4.43.0) - 2026-05-02
+## [Unreleased]
 ### Added
 - Bootstrap 5 support (upgraded from Bootstrap 3)
 - AdminLTE 4 support (upgraded from AdminLTE 2), requires Bootstrap 5

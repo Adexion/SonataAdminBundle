@@ -93,6 +93,11 @@
     "suggest": {
         "twig/extra-bundle": "Auto configures the Twig Intl extension"
     },
+    "extra": {
+        "branch-alias": {
+            "dev-claude/upgrade-sonata-admin-frontend-I91tj": "4.42.x-dev"
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
