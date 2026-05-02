@@ -145,3 +145,9 @@
 // Bootstrap 3 sr-only → visually-hidden
 // ---------------------------------------------------------------------------
 .sr-only { @extend .visually-hidden; }
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 tab pane: "fade in active" → "fade show active"
+// BS5 uses .show for opacity:1, BS3 used .in — alias it here
+// ---------------------------------------------------------------------------
+.fade.in { opacity: 1; }
