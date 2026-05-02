@@ -62,15 +62,17 @@ jobs:
               run: |
                   BRANCH="sync-upstream-$(date +%Y%m%d)"
                   git checkout -b "$BRANCH"
-                  git merge --strategy-option=theirs upstream/4.x -m "chore: sync upstream (conflict resolution needed) $(date +%Y-%m-%d)" || true
+                  git merge upstream/4.x || true
+                  git add -A
+                  git commit -m "chore: sync upstream $(date +%Y-%m-%d) — conflict markers left for manual resolution"
                   git push origin "$BRANCH"
                   gh pr create \
                       --title "chore: sync upstream $(date +%Y-%m-%d) — manual conflict resolution needed" \
                       --body "Automated sync with [sonata-project/SonataAdminBundle 4.x](https://github.com/sonata-project/SonataAdminBundle/tree/4.x) failed due to merge conflicts.
 
-                  Review the diff and resolve conflicts before merging into \`claude/upgrade-sonata-admin-frontend-I91tj\`.
+                  Review the diff and resolve conflict markers before merging into \`claude/upgrade-sonata-admin-frontend-I91tj\`.
 
-                  **Conflicts are most likely in files modified by our frontend upgrade:**
+                  **Conflicts are most likely in files modified by the frontend upgrade:**
                   - \`assets/\` (JS/SCSS)
                   - \`src/Resources/views/\` (Twig templates)
                   - \`package.json\`, \`webpack.config.js\`" \
