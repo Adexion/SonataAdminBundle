@@ -43,6 +43,6 @@
 @import './flashmessage';
 @import './readmore';
 
-// Optional: Bootstrap 3 / AdminLTE 2-3 compatibility aliases.
-// Uncomment if your app still uses old class names (box, pull-right, label-*, etc.)
-// @import './compat';
+// Bootstrap 3 / AdminLTE 2-3 compatibility aliases.
+// Deprecated: will be removed in 5.0. Migrate templates to Bootstrap 5 class names.
+@import './compat';
