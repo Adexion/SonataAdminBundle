@@ -44,7 +44,7 @@ This template can be customized to match your needs. You should only extends the
                                     <img src="{{ metaImage }}" alt="{{ meta.title }}" />
                                 {% endblock %}
                                 {% block sonata_mosaic_default_view %}
-                                    <span class="mosaic-box-label label label-primary pull-right">#{{ admin.id(object) }}</span>
+                                    <span class="mosaic-box-label badge bg-primary float-end">#{{ admin.id(object) }}</span>
                                 {% endblock %}
                             </div>
 
@@ -54,7 +54,7 @@ This template can be customized to match your needs. You should only extends the
                             #}
                             <div class="mosaic-inner-box-hover">
                                 {% block sonata_mosaic_hover_view %}
-                                    <span class="mosaic-box-label label label-primary pull-right">#{{ admin.id(object) }}</span>
+                                    <span class="mosaic-box-label badge bg-primary float-end">#{{ admin.id(object) }}</span>
                                     {{ meta.description }}
                                 {% endblock %}
                             </div>
@@ -73,7 +73,7 @@ This template can be customized to match your needs. You should only extends the
                         </div>
                     </div>
                 {% endset %}
-                <div class="col-xs-6 col-sm-3 mosaic-box sonata-ba-list-field-batch sonata-ba-list-field"
+                <div class="col-6 col-sm-3 mosaic-box sonata-ba-list-field-batch sonata-ba-list-field"
                      objectId="{{ admin.id(object) }}">
                     {% if admin.hasAccess('edit', object) and admin.hasRoute('edit') %}
                         <a class="mosaic-inner-link"
@@ -91,10 +91,10 @@ This template can be customized to match your needs. You should only extends the
                 </div>
 
                 {% if loop.index % 4 == 0 %}
-                    <div class="clearfix hidden-xs"></div>
+                    <div class="clearfix d-none d-sm-block"></div>
                 {% endif %}
                 {% if loop.index % 2 == 0 %}
-                    <div class="clearfix visible-xs"></div>
+                    <div class="clearfix d-sm-none"></div>
                 {% endif %}
             {% endfor %}
         </div>
