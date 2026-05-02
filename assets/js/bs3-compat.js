@@ -27,6 +27,18 @@ function migrateDataAttributes(root) {
         'data-interval': 'data-bs-interval',
     };
 
+    // AdminLTE 2/3 widget attributes → AdminLTE 4
+    const lteMap = {
+        'push-menu': 'sidebar',
+        'tree':      'treeview',
+    };
+    root.querySelectorAll('[data-widget]').forEach(el => {
+        const val = el.getAttribute('data-widget');
+        if (lteMap[val] && !el.hasAttribute('data-lte-toggle')) {
+            el.setAttribute('data-lte-toggle', lteMap[val]);
+        }
+    });
+
     const selector = Object.keys(map)
         .map(attr => `[${attr}]`)
         .join(',');
