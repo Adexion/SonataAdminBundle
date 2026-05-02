@@ -1,0 +1,147 @@
+/*!
+ * This file is part of the Sonata Project package.
+ *
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Bootstrap 3 / AdminLTE 2-3 compatibility aliases.
+ * Import this file in your app if you have custom templates still using
+ * Bootstrap 3 or AdminLTE 2/3 class names and don't want to refactor them yet.
+ *
+ * NOTE: CSS aliases cover visual styling only.
+ * data-toggle / data-dismiss / data-target attributes still require manual
+ * update — see the JS shim (assets/js/bs3-compat.js) for a transitional fix.
+ */
+
+// ---------------------------------------------------------------------------
+// Float utilities
+// ---------------------------------------------------------------------------
+.pull-left  { float: left  !important; }
+.pull-right { float: right !important; }
+
+// ---------------------------------------------------------------------------
+// Display / visibility utilities (Bootstrap 3)
+// ---------------------------------------------------------------------------
+.hide { display: none !important; }
+
+// Bootstrap 3 responsive visibility (rough equivalents)
+.hidden-xs { @extend .d-none, .d-sm-block; }
+.hidden-sm { @extend .d-sm-none, .d-md-block; }
+.hidden-md { @extend .d-md-none, .d-lg-block; }
+.hidden-lg { @extend .d-lg-none; }
+.visible-xs { @extend .d-sm-none; }
+.visible-sm { @extend .d-none, .d-sm-block, .d-md-none; }
+
+// ---------------------------------------------------------------------------
+// Spacing utilities
+// ---------------------------------------------------------------------------
+.no-padding { padding: 0 !important; }
+.nopadding  { padding: 0 !important; }
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 grid col-xs-* (removed in BS4+)
+// ---------------------------------------------------------------------------
+.col-xs-1  { @extend .col-1; }
+.col-xs-2  { @extend .col-2; }
+.col-xs-3  { @extend .col-3; }
+.col-xs-4  { @extend .col-4; }
+.col-xs-5  { @extend .col-5; }
+.col-xs-6  { @extend .col-6; }
+.col-xs-7  { @extend .col-7; }
+.col-xs-8  { @extend .col-8; }
+.col-xs-9  { @extend .col-9; }
+.col-xs-10 { @extend .col-10; }
+.col-xs-11 { @extend .col-11; }
+.col-xs-12 { @extend .col-12; }
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 btn-default → btn-secondary
+// ---------------------------------------------------------------------------
+.btn-default { @extend .btn-secondary; }
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 labels → Bootstrap 5 badges
+// Usage: class="label label-primary" still works visually
+// ---------------------------------------------------------------------------
+.label {
+  display: inline-block;
+  padding: 0.25em 0.45em;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--bs-badge-border-radius, 0.375rem);
+}
+.label-default { background-color: #6c757d; color: #fff; }
+.label-primary  { background-color: var(--bs-primary); color: #fff; }
+.label-success  { background-color: var(--bs-success); color: #fff; }
+.label-info     { background-color: var(--bs-info);    color: #000; }
+.label-warning  { background-color: var(--bs-warning); color: #000; }
+.label-danger   { background-color: var(--bs-danger);  color: #fff; }
+
+// ---------------------------------------------------------------------------
+// AdminLTE 2/3 content box → Bootstrap 5 card
+// ---------------------------------------------------------------------------
+.box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--bs-card-bg, #fff);
+  background-clip: border-box;
+  border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
+  border-radius: var(--bs-card-border-radius, 0.375rem);
+  margin-bottom: 1rem;
+}
+.box-header {
+  padding: var(--bs-card-cap-padding-y, .5rem) var(--bs-card-cap-padding-x, 1rem);
+  background-color: var(--bs-card-cap-bg, rgba(0,0,0,.03));
+  border-bottom: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
+  display: flex;
+  align-items: center;
+}
+.box-body {
+  flex: 1 1 auto;
+  padding: var(--bs-card-spacer-y, 1rem) var(--bs-card-spacer-x, 1rem);
+}
+.box-footer {
+  padding: var(--bs-card-cap-padding-y, .5rem) var(--bs-card-cap-padding-x, 1rem);
+  background-color: var(--bs-card-cap-bg, rgba(0,0,0,.03));
+  border-top: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
+}
+.box-title  { @extend .card-title; }
+.box-tools  { margin-left: auto; }
+.with-border { border-bottom: 1px solid var(--bs-card-border-color, rgba(0,0,0,.125)); }
+
+// AdminLTE 2 box variants (map to Bootstrap 5 border utilities)
+.box-primary { border-top: 3px solid var(--bs-primary); }
+.box-success { border-top: 3px solid var(--bs-success); }
+.box-warning { border-top: 3px solid var(--bs-warning); }
+.box-danger  { border-top: 3px solid var(--bs-danger);  }
+.box-info    { border-top: 3px solid var(--bs-info);    }
+
+// ---------------------------------------------------------------------------
+// AdminLTE 2/3 info-box color (bg-aqua etc.)
+// ---------------------------------------------------------------------------
+.bg-aqua,   .bg-light-blue { background-color: #17a2b8 !important; }
+.bg-aqua-active             { background-color: #1291aa !important; }
+.bg-red                     { background-color: #dc3545 !important; }
+.bg-yellow                  { background-color: #ffc107 !important; }
+.bg-navy                    { background-color: #001f3f !important; }
+.bg-teal                    { background-color: #20c997 !important; }
+.bg-olive                   { background-color: #3d9970 !important; }
+.bg-lime                    { background-color: #01ff70 !important; color: #000; }
+.bg-orange                  { background-color: #ff851b !important; }
+.bg-fuchsia                 { background-color: #f012be !important; }
+.bg-purple                  { background-color: #605ca8 !important; }
+.bg-maroon                  { background-color: #d81b60 !important; }
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 sr-only → visually-hidden
+// ---------------------------------------------------------------------------
+.sr-only { @extend .visually-hidden; }
