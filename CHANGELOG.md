@@ -2,6 +2,33 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.43.0](https://github.com/sonata-project/SonataAdminBundle/compare/4.42.0...4.43.0) - 2026-05-02
+### Added
+- Bootstrap 5 support (upgraded from Bootstrap 3)
+- AdminLTE 4 support (upgraded from AdminLTE 2), requires Bootstrap 5
+- FontAwesome 6 support (upgraded from FontAwesome 4)
+- Select2 Bootstrap 5 theme (`select2-bootstrap-5-theme`)
+- Bootstrap 3 / AdminLTE 2-3 CSS compatibility layer (`assets/scss/_compat.scss`) — deprecated, will be removed in 5.0
+- Bootstrap 3 / AdminLTE 2-3 JS data attribute shim (`assets/js/bs3-compat.js`) — deprecated, will be removed in 5.0
+
+### Changed
+- Select2 theme option changed from `bootstrap` to `bootstrap-5`
+- AdminLTE layout structure updated to AdminLTE 4 (`app-wrapper`, `app-header`, `app-sidebar`, `app-main`)
+- Sidebar toggle attribute changed from `data-widget="push-menu"` to `data-lte-toggle="sidebar"` (covered by JS shim)
+- All Bootstrap 3 class names migrated to Bootstrap 5 equivalents in all built-in templates
+- `admin_lte_skin_class` block now controls sidebar background class instead of body skin class
+
+### Deprecated
+- `assets/scss/_compat.scss` — Bootstrap 3 / AdminLTE 2-3 CSS aliases, will be removed in 5.0
+- `assets/js/bs3-compat.js` — Bootstrap 3 / AdminLTE 2-3 data attribute shim, will be removed in 5.0
+
+### Removed
+- `icheck` dependency — replaced by native Bootstrap 5 form-check styling
+- `x-editable` dependency — no Bootstrap 5 compatible version exists
+- `jquery-slimscroll` dependency — no longer needed in AdminLTE 4
+- `select2-bootstrap-theme` dependency — replaced by `select2-bootstrap-5-theme`
+- AdminLTE 2 skin CSS files copy from webpack config
+
 ## [4.42.0](https://github.com/sonata-project/SonataAdminBundle/compare/4.41.0...4.42.0) - 2026-01-05
 ### Changed
 - [[#8369](https://github.com/sonata-project/SonataAdminBundle/pull/8369)] The `symfony/security-acl` dependency is now optional. You need to explicitly require it as a dependency if you are using ACL. ([@dmaicher](https://github.com/dmaicher))

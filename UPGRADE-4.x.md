@@ -1,6 +1,102 @@
 UPGRADE 4.x
 ===========
 
+UPGRADE FROM 4.42 to 4.43
+=========================
+
+## Frontend — Bootstrap 5 + AdminLTE 4
+
+The frontend has been upgraded from Bootstrap 3 + AdminLTE 2 to Bootstrap 5 + AdminLTE 4.
+A compatibility layer is included and active by default, so **existing applications require
+no immediate template changes**. The compat layer will be removed in 5.0.
+
+### What works automatically (no changes needed)
+
+The following are handled by the built-in compatibility layer:
+
+- Bootstrap 3 CSS classes: `.box`, `.box-header`, `.box-body`, `.box-footer`, `.box-title`,
+  `.pull-left`, `.pull-right`, `.btn-default`, `.label.label-*`, `.col-xs-*`,
+  `.no-padding`, `.nopadding`, `.sr-only`, `.hide`, `.hidden-xs/sm/md/lg`, `.visible-xs`
+- Bootstrap 3 data attributes: `data-toggle`, `data-dismiss`, `data-target`, `data-parent`
+  (rewritten to `data-bs-*` at runtime by the JS shim)
+- AdminLTE 2/3 sidebar toggle: `data-widget="push-menu"` → `data-lte-toggle="sidebar"`
+- Bootstrap 3 tab visibility: `.fade.in` → opacity 1 (same as BS5 `.fade.show`)
+
+### Recommended template migration (before 5.0)
+
+To prepare for the removal of the compat layer in 5.0, update your templates:
+
+**CSS classes:**
+
+| Old (Bootstrap 3 / AdminLTE 2-3)               | New (Bootstrap 5 / AdminLTE 4)          |
+|------------------------------------------------|-----------------------------------------|
+| `.box`                                         | `.card`                                 |
+| `.box-header`, `.box-body`, `.box-footer`      | `.card-header`, `.card-body`, `.card-footer` |
+| `.box-title`                                   | `.card-title`                           |
+| `.box-primary/success/warning/danger/info`     | `.card` + `border-top: 3px solid ...`   |
+| `.pull-left` / `.pull-right`                   | `.float-start` / `.float-end`           |
+| `.btn-default`                                 | `.btn-secondary`                        |
+| `.label.label-primary` (etc.)                  | `.badge.bg-primary` (etc.)              |
+| `.col-xs-6`                                    | `.col-6`                                |
+| `.no-padding` / `.nopadding`                   | `.p-0`                                  |
+| `.sr-only`                                     | `.visually-hidden`                      |
+| `.hide`                                        | `.d-none`                               |
+| `.hidden-xs`                                   | `.d-none.d-sm-block`                    |
+| `.bg-aqua`                                     | `.bg-info`                              |
+
+**HTML attributes:**
+
+| Old                              | New                              |
+|----------------------------------|----------------------------------|
+| `data-toggle="dropdown"`         | `data-bs-toggle="dropdown"`      |
+| `data-toggle="tab"`              | `data-bs-toggle="tab"`           |
+| `data-toggle="modal"`            | `data-bs-toggle="modal"`         |
+| `data-toggle="collapse"`         | `data-bs-toggle="collapse"`      |
+| `data-dismiss="modal"`           | `data-bs-dismiss="modal"`        |
+| `data-target="#foo"`             | `data-bs-target="#foo"`          |
+| `data-widget="push-menu"`        | `data-lte-toggle="sidebar"`      |
+| `class="tab-pane fade in active"`| `class="tab-pane fade show active"` |
+
+### Removed dependencies
+
+The following npm packages were removed and must be removed from your own `package.json`
+if you required them directly:
+
+- `icheck` — use native Bootstrap 5 `.form-check` styling instead
+- `x-editable` — no Bootstrap 5 compatible version exists; implement inline editing manually
+- `jquery-slimscroll` — no longer needed in AdminLTE 4
+- `select2-bootstrap-theme` — replaced by `select2-bootstrap-5-theme`
+
+### Custom layouts
+
+If your application extends `standard_layout.html.twig` with a custom layout,
+update the HTML structure to AdminLTE 4:
+
+```html
+<!-- Old (AdminLTE 2) -->
+<body class="skin-blue fixed">
+  <div class="wrapper">
+    <header class="main-header">...</header>
+    <aside class="main-sidebar">...</aside>
+    <div class="content-wrapper">...</div>
+    <footer class="main-footer">...</footer>
+  </div>
+</body>
+
+<!-- New (AdminLTE 4) -->
+<body class="layout-fixed">
+  <div class="app-wrapper">
+    <nav class="app-header navbar">...</nav>
+    <aside class="app-sidebar">...</aside>
+    <main class="app-main">...</main>
+    <footer class="app-footer">...</footer>
+  </div>
+</body>
+```
+
+The `admin_lte_skin_class` block previously set the body skin class (e.g. `skin-blue`).
+It now controls the sidebar background class (e.g. `bg-dark`).
+
 UPGRADE FROM 4.41 to 4.42
 =========================
 
