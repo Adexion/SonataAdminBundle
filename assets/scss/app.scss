@@ -43,6 +43,6 @@
 @import './flashmessage';
 @import './readmore';
 
-// Bootstrap 3 / AdminLTE 2-3 compatibility aliases.
-// Deprecated: will be removed in 5.0. Migrate templates to Bootstrap 5 class names.
+// NEXT_MAJOR: Remove this import.
+// @deprecated since sonata-project/admin-bundle 4.x and will be removed in 5.0.
 @import './compat';

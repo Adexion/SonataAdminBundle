@@ -1,16 +1,11 @@
+// NEXT_MAJOR: Remove this file.
 /**
- * Bootstrap 3 → 5 data attribute shim.
+ * @deprecated since sonata-project/admin-bundle 4.x and will be removed in 5.0.
  *
- * Rewrites legacy data-toggle / data-dismiss / data-target attributes
- * to their Bootstrap 5 equivalents (data-bs-*) so existing templates
- * don't need to be updated immediately.
- *
- * Import this file in your own app's JS entry point BEFORE bootstrap:
- *   import '@sonata-project/admin-bundle/assets/js/bs3-compat';
- *
- * Or copy it to your own assets and import from there.
- *
- * Remove once all templates are migrated to Bootstrap 5 attributes.
+ * Bootstrap 3 / AdminLTE 2-3 data attribute shim.
+ * Rewrites legacy data-toggle / data-dismiss / data-target / data-widget
+ * to Bootstrap 5 (data-bs-*) and AdminLTE 4 (data-lte-toggle) equivalents
+ * at runtime so existing templates require no immediate changes.
  */
 
 function migrateDataAttributes(root) {

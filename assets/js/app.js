@@ -21,7 +21,8 @@ import 'jquery.scrollto';
 import 'jquery-ui/ui/widget';
 import 'jquery-ui/ui/widgets/sortable';
 
-// Bootstrap 3 / AdminLTE 2-3 compatibility shim (deprecated: remove in 5.0)
+// NEXT_MAJOR: Remove this import.
+// @deprecated since sonata-project/admin-bundle 4.x and will be removed in 5.0.
 import './bs3-compat';
 
 // Bootstrap 5 (includes Popper.js)

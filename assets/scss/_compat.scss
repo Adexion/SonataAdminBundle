@@ -1,3 +1,4 @@
+// NEXT_MAJOR: Remove this file.
 /*!
  * This file is part of the Sonata Project package.
  *
@@ -6,13 +7,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Bootstrap 3 / AdminLTE 2-3 compatibility aliases.
- * Import this file in your app if you have custom templates still using
- * Bootstrap 3 or AdminLTE 2/3 class names and don't want to refactor them yet.
+ * @deprecated since sonata-project/admin-bundle 4.x and will be removed in 5.0.
  *
- * NOTE: CSS aliases cover visual styling only.
- * data-toggle / data-dismiss / data-target attributes still require manual
- * update — see the JS shim (assets/js/bs3-compat.js) for a transitional fix.
+ * Bootstrap 3 / AdminLTE 2-3 CSS compatibility aliases.
+ * Allows templates still using old class names (box, pull-right, label-*, etc.)
+ * to render correctly without immediate migration.
+ * For data attribute migration see assets/js/bs3-compat.js.
  */
 
 // ---------------------------------------------------------------------------
