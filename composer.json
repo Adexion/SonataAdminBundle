@@ -95,11 +95,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "extra": {
-        "branch-alias": {
-            "dev-claude/upgrade-sonata-admin-frontend-I91tj": "4.42.x-dev"
-        }
-    },
     "autoload": {
         "psr-4": {
             "Sonata\\AdminBundle\\": "src/"
@@ -116,5 +111,10 @@
             "phpstan/extension-installer": true
         },
         "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-claude/upgrade-sonata-admin-frontend-I91tj": "4.42.x-dev"
+        }
     }
 }
