@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 
+import { Popover } from 'bootstrap';
 import Config from './core/config';
 import Translation from './core/translation';
 
@@ -101,7 +102,10 @@ const Admin = {
         });
 
         if (undefined !== popover) {
-          select.select2('container').popover(popover.options);
+          const container = select.select2('container')[0];
+          if (container) {
+            new Popover(container, popover.options);
+          }
         }
       });
     }

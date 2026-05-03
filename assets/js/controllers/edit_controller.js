@@ -8,6 +8,7 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
+import { Tab } from 'bootstrap';
 
 export default class extends Controller {
   static targets = ['tab', 'tabStore'];
@@ -46,7 +47,7 @@ export default class extends Controller {
       if (pane.querySelectorAll(errorSelector).length > 0) {
         // Only show first tab with errors
         if (!firstTabWithErrors) {
-          jQuery(tab).tab('show');
+          Tab.getOrCreateInstance(tab).show();
           firstTabWithErrors = tab;
         }
 
@@ -74,9 +75,7 @@ export default class extends Controller {
   }
 
   get tabSelected() {
-    return this.tabTargets.find((tab) => {
-      return tab.parentElement.classList.contains('active');
-    });
+    return this.tabTargets.find((tab) => tab.classList.contains('active'));
   }
 
   get submitters() {

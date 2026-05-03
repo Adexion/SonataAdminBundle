@@ -140,7 +140,7 @@ This code manages the many-to-[one|many] association field popup
                 field_dialog_form_list_handle_action_{{ id }}();
 
                 // open the dialog in modal mode
-                field_dialog_{{ id }}.modal();
+                field_dialog_{{ id }}.modal('show');
 
                 Admin.setup_list_modal(field_dialog_{{ id }});
             }
@@ -182,7 +182,7 @@ This code manages the many-to-[one|many] association field popup
                 jQuery('form', field_dialog_{{ id }}).on('submit', field_dialog_form_action_{{ id }});
 
                 // open the dialog in modal mode
-                field_dialog_{{ id }}.modal();
+                field_dialog_{{ id }}.modal('show');
 
                 Admin.setup_list_modal(field_dialog_{{ id }});
             }
@@ -224,7 +224,7 @@ This code manages the many-to-[one|many] association field popup
                 jQuery('form', field_dialog_{{ id }}).on('submit', field_dialog_form_action_{{ id }});
 
                 // open the dialog in modal mode
-                field_dialog_{{ id }}.modal();
+                field_dialog_{{ id }}.modal('show');
 
                 Admin.setup_list_modal(field_dialog_{{ id }});
             }
