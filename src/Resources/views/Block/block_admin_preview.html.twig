@@ -79,9 +79,7 @@ file that was distributed with this source code.
                 </div>
             {% else %}
                 {% block no_result_content %}
-                    <div class="info-box">
-                        <span class="info-box-text">{{ 'no_result'|trans({}, 'SonataAdminBundle') }}</span>
-                    </div>
+                    <p class="text-center text-muted py-3">{{ 'no_result'|trans({}, 'SonataAdminBundle') }}</p>
                 {% endblock %}
             {% endif %}
 

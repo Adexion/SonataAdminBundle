@@ -366,3 +366,30 @@
 .fade.in {
   opacity: 1;
 }
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 form-group has-error state
+// ---------------------------------------------------------------------------
+
+.has-error {
+  .form-control,
+  .form-select {
+    border-color: var(--bs-danger);
+  }
+
+  label {
+    color: var(--bs-danger);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 checkbox / radio wrappers
+// ---------------------------------------------------------------------------
+
+div.checkbox,
+div.radio {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+  position: relative;
+}

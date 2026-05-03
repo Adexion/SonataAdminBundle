@@ -54,11 +54,11 @@ file that was distributed with this source code.
         {% if money_pattern matches '/^{{ widget }}/' %}
             <div class="input-group">
                 {{- block('form_widget_simple') -}}
-                <span class="input-group-addon">{{ currencySymbol }}</span>
+                <span class="input-group-text">{{ currencySymbol }}</span>
             </div>
         {% elseif money_pattern matches '/{{ widget }}$/' %}
             <div class="input-group">
-                <span class="input-group-addon">{{ currencySymbol }}</span>
+                <span class="input-group-text">{{ currencySymbol }}</span>
                 {{- block('form_widget_simple') -}}
             </div>
         {% endif %}
@@ -69,7 +69,7 @@ file that was distributed with this source code.
     {% set type = type|default('text') %}
     <div class="input-group">
         {{ block('form_widget_simple') }}
-        <span class="input-group-addon">%</span>
+        <span class="input-group-text">%</span>
     </div>
 {% endblock percent_widget %}
 
@@ -98,10 +98,10 @@ file that was distributed with this source code.
 {# Labels #}
 {% block form_label %}
     {% if label is not same as(false) and sonata_admin.options['form_type'] == 'horizontal' %}
-        {% set label_class = 'col-sm-3' %}
+        {% set label_class = label_class|default('') ~ ' col-sm-3 col-form-label' %}
+    {% else %}
+        {% set label_class = label_class|default('') ~ ' form-label' %}
     {% endif %}
-
-    {% set label_class = label_class|default('') ~ ' control-label' %}
 
     {% if label is not same as(false) %}
         {% set label_attr = label_attr|merge({'class': label_attr.class|default('') ~ ' ' ~ label_class }) %}
@@ -327,7 +327,7 @@ file that was distributed with this source code.
                 {% if 'collection' in form.parent.vars.block_prefixes %}
                     {% set div_class = div_class ~ ' col-sm-12' %}
                 {% else %}
-                    {% set div_class = div_class ~ ' col-sm-9 col-sm-offset-3' %}
+                    {% set div_class = div_class ~ ' col-sm-9 offset-sm-3' %}
                 {% endif %}
             {% else %}
                 {% set div_class = div_class ~ ' col-sm-9' %}
@@ -374,12 +374,12 @@ file that was distributed with this source code.
     <div class="sonata-collection-row" {{ stimulus_target('sonata-collection', 'item') }}>
         {% if allow_delete %}
             <div class="row">
-                <div class="col-xs-1">
+                <div class="col-1">
                     <button type="button" class="btn btn-link sonata-collection-delete" {{ stimulus_action('sonata-collection', 'delete', 'click') }}>
                         <i class="fas fa-minus-circle" aria-hidden="true"></i>
                     </button>
                 </div>
-                <div class="col-xs-11">
+                <div class="col-11">
         {% endif %}
             {{ form_row(child, { label: false }) }}
         {% if allow_delete %}
@@ -624,7 +624,7 @@ file that was distributed with this source code.
                         (sonata_admin.field_description.associationadmin.idParameter) : sonata_admin.field_description.associationadmin.urlSafeIdentifier(sonata_admin.value)})
                     }}"
                        onclick="return start_field_dialog_form_edit_{{ id }}(this);"
-                       class="btn btn-warning btn-sm sonata-ba-action {% if sonata_admin.value == null %}hidden{% endif %}"
+                       class="btn btn-warning btn-sm sonata-ba-action {% if sonata_admin.value == null %}d-none{% endif %}"
                         {# NEXT_MAJOR: Remove the fallback on null and on btn_catalogue #}
                        title="{{
                            btn_translation_domain|default(null) is same as(false)
@@ -677,8 +677,8 @@ file that was distributed with this source code.
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"></h4>
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                     </div>
