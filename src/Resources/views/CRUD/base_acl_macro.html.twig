@@ -34,7 +34,7 @@ file that was distributed with this source code.
                             <tr>
                                 <th>{{ td_type|trans({}, 'SonataAdminBundle') }}</th>
                                 {% for permission in permissions %}
-                                    <th class="text-right">{{ permission }}</th>
+                                    <th class="text-end">{{ permission }}</th>
                                 {% endfor %}
                             </tr>
                         {% endif %}
@@ -46,7 +46,7 @@ file that was distributed with this source code.
                                 {{ form_widget(typeChild) }}
                             </td>
                             {% for permission in permissions %}
-                                <td class="text-right">{{ form_widget(child[permission], { label: false }) }}</td>
+                                <td class="text-end">{{ form_widget(child[permission], { label: false }) }}</td>
                             {% endfor %}
                         </tr>
                     {% endfor %}
