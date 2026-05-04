@@ -313,7 +313,7 @@ file that was distributed with this source code.
 {% block form_row %}
     {% set show_label = show_label ?? true %}
     {% set row_id = 'sonata-ba-field-container-'~id %}
-    {% set row_class = (row_attr.class|default('') ~ ' form-group' ~ (errors|length > 0 ? ' has-error'))|trim %}
+    {% set row_class = (row_attr.class|default('') ~ ' form-group mb-3' ~ (sonata_admin is defined and sonata_admin.options['form_type'] == 'horizontal' ? ' row' : '') ~ (errors|length > 0 ? ' has-error'))|trim %}
     <div{% with {attr: row_attr|merge({id: row_id, class: row_class})} %}{{ block('attributes') }}{% endwith %}>
         {% set div_class = 'sonata-ba-field' %}
 
