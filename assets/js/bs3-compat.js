@@ -50,7 +50,24 @@ function migrateDataAttributes(root) {
 }
 
 // Run on initial DOM
-document.addEventListener('DOMContentLoaded', () => migrateDataAttributes(document));
+document.addEventListener('DOMContentLoaded', () => {
+  migrateDataAttributes(document);
+
+  // Bootstrap 3 jQuery modal API shim for Bootstrap 5.
+  // edit_many_script.html.twig calls $element.modal('show'/'hide') which no longer
+  // exists in Bootstrap 5 (jQuery plugins were dropped). Polyfill it via bootstrap.Modal.
+  if (typeof jQuery !== 'undefined' && typeof bootstrap !== 'undefined' && !jQuery.fn.modal) {
+    jQuery.fn.modal = function (action) {
+      return this.each(function () {
+        const instance = bootstrap.Modal.getOrCreateInstance(this);
+        if (action === 'show') instance.show();
+        else if (action === 'hide') instance.hide();
+        else if (action === 'toggle') instance.toggle();
+        else if (action === 'dispose') instance.dispose();
+      });
+    };
+  }
+});
 
 // Re-run when Sonata injects dynamic content (modals, inline forms, etc.)
 document.addEventListener('sonata-admin-append-form-element', (e) => {

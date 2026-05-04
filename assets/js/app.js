@@ -26,7 +26,7 @@ import 'jquery-ui/ui/widgets/sortable';
 import './bs3-compat';
 
 // Bootstrap 5 (includes Popper.js)
-import 'bootstrap';
+import * as bootstrap from 'bootstrap';
 
 import 'jquery-form';
 
@@ -52,5 +52,6 @@ import { sonataApplication } from './stimulus';
 // Create global variables to be used outside this script
 global.$ = $;
 global.jQuery = $;
+global.bootstrap = bootstrap;
 global.stimulus = stimulus;
 global.sonataApplication = sonataApplication;
