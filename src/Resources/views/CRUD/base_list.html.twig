@@ -42,7 +42,7 @@ file that was distributed with this source code.
         {% endif %}
 
         {# Add a margin if no pager to prevent dropdown cropping on window #}
-        <div class="card card-primary"{% if admin.datagrid.pager.lastPage == 1 %} style="margin-bottom: 100px;"{% endif %}>
+        <div class="card card-primary card-outline mb-4"{% if admin.datagrid.pager.lastPage == 1 %} style="margin-bottom: 100px;"{% endif %}>
             <div class="card-body{% if datagrid_has_results %} table-responsive p-0{% endif %}">
                 {{ sonata_block_render_event('sonata.admin.list.table.top', { 'admin': admin }) }}
 
@@ -247,7 +247,7 @@ file that was distributed with this source code.
                 <a href="#" class="nav-link dropdown-toggle sonata-ba-action" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-filter" aria-hidden="true"></i>
                     {{ 'link_filters'|trans({}, 'SonataAdminBundle') }}
-                    <span class="badge bg-primary" {{ stimulus_target('sonata-filter-list', 'counter') }}></span>
+                    <span class="badge text-bg-primary" {{ stimulus_target('sonata-filter-list', 'counter') }}></span>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-scrollable" role="menu">
@@ -281,7 +281,7 @@ file that was distributed with this source code.
 
         <div class="col-12 sonata-filters-box"
              id="filter-container-{{ admin.uniqid() }}" {{ stimulus_controller('sonata-filter', { 'defaultValues': admin.defaultFilterParameters|json_encode }, {}, { 'sonata-filter-list': '#filter-list-' ~ admin.uniqid() }) }} {% if not admin.datagrid.hasDisplayableFilters %}hidden{% endif %}>
-            <div class="card card-primary">
+            <div class="card card-primary card-outline mb-4">
                 <div class="card-body">
                     <form
                         class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'd-none' : '' }}"

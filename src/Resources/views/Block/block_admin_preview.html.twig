@@ -16,7 +16,7 @@ file that was distributed with this source code.
 {% block block %}
     {% set inlineAnchor = settings.text|replace({'.':'_'}) %}
     {% set results_count = admin.datagrid.pager.countResults %}
-    <div class="card card-primary" id="{{ inlineAnchor }}">
+    <div class="card card-primary card-outline mb-4" id="{{ inlineAnchor }}">
         <div class="card-header">
             {{ settings.icon|default('')|parse_icon }}
             <h3 class="card-title">

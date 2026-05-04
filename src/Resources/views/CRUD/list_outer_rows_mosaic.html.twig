@@ -44,7 +44,7 @@ This template can be customized to match your needs. You should only extends the
                                     <img src="{{ metaImage }}" alt="{{ meta.title }}" />
                                 {% endblock %}
                                 {% block sonata_mosaic_default_view %}
-                                    <span class="mosaic-box-label badge bg-primary float-end">#{{ admin.id(object) }}</span>
+                                    <span class="mosaic-box-label badge text-bg-primary float-end">#{{ admin.id(object) }}</span>
                                 {% endblock %}
                             </div>
 
@@ -54,7 +54,7 @@ This template can be customized to match your needs. You should only extends the
                             #}
                             <div class="mosaic-inner-box-hover">
                                 {% block sonata_mosaic_hover_view %}
-                                    <span class="mosaic-box-label badge bg-primary float-end">#{{ admin.id(object) }}</span>
+                                    <span class="mosaic-box-label badge text-bg-primary float-end">#{{ admin.id(object) }}</span>
                                     {{ meta.description }}
                                 {% endblock %}
                             </div>

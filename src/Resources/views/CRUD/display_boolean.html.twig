@@ -17,9 +17,9 @@ file that was distributed with this source code.
     {% endif %}
 
     {% if inverse|default(false) ? not value : value %}
-        {% set class = 'bg-success' %}
+        {% set class = 'text-bg-success' %}
     {% else %}
-        {% set class = 'bg-danger' %}
+        {% set class = 'text-bg-danger' %}
     {% endif %}
 
     <span class="badge {{ class }}">{{ text }}</span>

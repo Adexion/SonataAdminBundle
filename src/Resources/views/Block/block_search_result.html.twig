@@ -29,7 +29,7 @@ file that was distributed with this source code.
 
                 <div class="card-tools float-end d-flex align-items-center gap-1">
                     {% if has_results %}
-                        <span class="badge bg-primary">{{ results_count }}</span>
+                        <span class="badge text-bg-primary">{{ results_count }}</span>
                     {% elseif admin.hasRoute('create') and admin.hasAccess('create') %}
                         <a href="{{ admin.generateUrl('create') }}" class="btn btn-sm btn-outline-secondary">
                             <i class="fas fa-plus" aria-hidden="true"></i>
@@ -44,7 +44,7 @@ file that was distributed with this source code.
 
                 <div class="matches">
                     {% for name, filter in filters %}
-                        <a class="badge bg-primary text-decoration-none" href="{{ admin.generateUrl('list', {'filter': {(filter.formName): {'value': term}}}) }}">
+                        <a class="badge text-bg-primary text-decoration-none" href="{{ admin.generateUrl('list', {'filter': {(filter.formName): {'value': term}}}) }}">
                             {% if filter.translationDomain is same as(false) %}
                                 {{ filter.label }}
                             {% else %}

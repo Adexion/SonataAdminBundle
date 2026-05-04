@@ -23,8 +23,8 @@ file that was distributed with this source code.
                     <i class="fas fa-code" aria-hidden="true"></i>
                     <a class="sonata-tree__item__edit" href="{{ admin.generateObjectUrl('edit', element) }}">{{ element.name }}</a>
                     <i class="text-muted">{{ element.description }}</i>
-                    <a class="badge bg-secondary float-end" href="{{ admin.generateObjectUrl('edit', element) }}">edit <i class="fas fa-magic" aria-hidden="true"></i></a>
-                    {% if true %}<span class="badge bg-warning text-dark float-end">true</span>{% endif %}
+                    <a class="badge text-bg-secondary float-end" href="{{ admin.generateObjectUrl('edit', element) }}">edit <i class="fas fa-magic" aria-hidden="true"></i></a>
+                    {% if true %}<span class="badge text-bg-warning float-end">true</span>{% endif %}
                 </div>
 
                 {% if element.children|length %}
@@ -45,7 +45,7 @@ file that was distributed with this source code.
 
 {% block list_table %}
     <div class="col-12">
-        <div class="card card-primary">
+        <div class="card card-primary card-outline mb-4">
             <div class="card-header">
                 <h1 class="card-title">
                     {{ 'element.tree_site_label'|trans({}, admin.translationdomain) }}
