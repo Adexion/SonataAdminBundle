@@ -229,10 +229,13 @@ div {
   white-space: normal;
 }
 
-/* remove underlines and inherited color from non-button table links */
+/* remove underlines from non-button table links; inherit color only for plain/identifier links */
 table.sonata-ba-list td a:not(.btn) {
-  color: inherit;
   text-decoration: none;
+}
+
+table.sonata-ba-list td a:not(.btn, [class*='text-'], .badge) {
+  color: inherit;
 }
 
 /* MEGA MENU STYLE */
@@ -451,6 +454,28 @@ div.sonata-filters-box .col-form-label {
 
 [hidden] {
   display: none !important;
+}
+
+/* AdminLTE 2/3 legacy color utilities — removed in AdminLTE 4 */
+.text-green {
+  color: var(--bs-success) !important;
+}
+
+.text-red {
+  color: var(--bs-danger) !important;
+}
+
+.text-orange {
+  color: #fd7e14 !important;
+}
+
+.text-yellow {
+  color: var(--bs-warning) !important;
+}
+
+/* info-box icons: AdminLTE 4 does not set color on info-box-icon, relies on text-bg-* */
+.info-box .info-box-icon {
+  color: #fff;
 }
 
 .card-body.p-0 .table tbody > tr > td:first-of-type,
