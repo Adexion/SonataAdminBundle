@@ -9,7 +9,7 @@ file that was distributed with this source code.
 
 #}
 
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-center mt-2">
     <ul class="pagination pagination-sm m-0">
         {% if admin.datagrid.pager.page > 2 %}
             <li class="page-item"><a class="page-link" href="{{ admin.generateUrl(action, admin.datagrid.paginationparameters(1)) }}" title="{{ 'link_first_pager'|trans({}, 'SonataAdminBundle') }}">&laquo;</a></li>

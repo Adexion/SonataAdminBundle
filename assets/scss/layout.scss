@@ -7,6 +7,18 @@
  * file that was distributed with this source code.
  */
 
+td.sonata-ba-list-field-batch,
+th.sonata-ba-list-field-header-batch {
+  text-align: center;
+  vertical-align: middle;
+  width: 1%;
+
+  input[type='checkbox'] {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 div {
   .sonata-ba-field-inline-table {
     input.title {

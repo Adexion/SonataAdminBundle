@@ -57,7 +57,7 @@ file that was distributed with this source code.
                                     {% for field_description in admin.list.getElements() %}
                                         {% if admin.hasRoute('batch') and field_description.name == constant('Sonata\\AdminBundle\\Datagrid\\ListMapper::NAME_BATCH') and batchactions|length > 0 %}
                                             <th class="sonata-ba-list-field-header sonata-ba-list-field-header-batch">
-                                              <input type="checkbox" id="list_batch_checkbox">
+                                              <div class="d-flex justify-content-center"><input class="form-check-input" type="checkbox" id="list_batch_checkbox"></div>
                                             </th>
                                         {% elseif field_description.name == constant('Sonata\\AdminBundle\\Datagrid\\ListMapper::NAME_SELECT') %}
                                             <th class="sonata-ba-list-field-header sonata-ba-list-field-header-select"></th>
@@ -141,7 +141,7 @@ file that was distributed with this source code.
                     <div class="card-footer clearfix">
                         <div class="d-flex align-items-center flex-wrap gap-2">
                             {% if not app.request.isXmlHttpRequest %}
-                                <div class="d-flex gap-2">
+                                <div class="d-flex align-items-center gap-2">
                                     {% if admin.hasRoute('batch') and batchactions|length > 0 %}
                                         {% block batch %}
                                             <script>
