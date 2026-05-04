@@ -41,10 +41,6 @@ html {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.open > .dropdown-menu {
-  animation-duration: 0.3s;
-}
-
 .dropdown-menu-scrollable {
   max-height: 75vh;
   overflow-y: auto;
@@ -57,18 +53,6 @@ html {
     margin: 0;
     padding: 0 5px 0 0;
     vertical-align: middle;
-  }
-}
-
-.nav-second-level li {
-  a {
-    padding-left: 37px;
-  }
-}
-
-.nav-third-level li {
-  a {
-    padding-left: 52px;
   }
 }
 
@@ -133,18 +117,6 @@ div {
   white-space: normal;
 }
 
-/* breadcrumb */
-.sonata-bc .breadcrumb {
-  background: inherit;
-  float: start;
-  margin: 0;
-  padding: 0;
-
-  li a {
-    display: inline-block;
-  }
-}
-
 /* MEGA MENU STYLE */
 .dropdown-menu .dropdown-menu {
   border: none !important;
@@ -166,10 +138,6 @@ div {
 .sidebar-menu li.keep-open > .nav-treeview {
   display: block !important;
   height: auto !important;
-}
-
-.arrow {
-  float: end;
 }
 
 /* Admin table */
@@ -225,19 +193,6 @@ h4.filter_legend {
 tr.filter.active * {
   color: #000;
   font-weight: bold;
-}
-
-form.sonata-filter-form.form-stacked {
-  padding-left: 0;
-}
-
-/* Overrides */
-
-/* select2 */
-.select2-choice,
-.select2-choices,
-.select2-drop {
-  border-radius: 0 !important;
 }
 
 /* Used for the mosaic view */
