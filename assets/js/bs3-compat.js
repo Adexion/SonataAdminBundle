@@ -56,10 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Bootstrap 3 jQuery modal API shim for Bootstrap 5.
   // edit_many_script.html.twig calls $element.modal('show'/'hide') which no longer
   // exists in Bootstrap 5 (jQuery plugins were dropped). Polyfill it via bootstrap.Modal.
+  /* global bootstrap */
   if (typeof jQuery !== 'undefined' && typeof bootstrap !== 'undefined' && !jQuery.fn.modal) {
-    jQuery.fn.modal = function (action) {
-      return this.each(function () {
-        const instance = bootstrap.Modal.getOrCreateInstance(this);
+    jQuery.fn.modal = function modal(action) {
+      return this.each((index, element) => {
+        const instance = bootstrap.Modal.getOrCreateInstance(element);
         if (action === 'show') instance.show();
         else if (action === 'hide') instance.hide();
         else if (action === 'toggle') instance.toggle();

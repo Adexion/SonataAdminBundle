@@ -104,6 +104,7 @@ const Admin = {
         if (undefined !== popover) {
           const container = select.select2('container')[0];
           if (container) {
+            // eslint-disable-next-line no-new
             new Popover(container, popover.options);
           }
         }
