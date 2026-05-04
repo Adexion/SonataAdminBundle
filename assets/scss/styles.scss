@@ -56,6 +56,27 @@ html {
   }
 }
 
+/* vertically center all navbar-nav items (breadcrumb, hamburger, etc.) */
+.app-header .navbar-nav {
+  align-items: center;
+}
+
+/* ensure right-side nav-links use flex so badges/icons align to center, not baseline */
+.app-header .navbar-nav.ms-auto .nav-link {
+  align-items: center;
+  display: flex;
+}
+
+/* constrain sidebar icons to 1.5rem like AdminLTE 4's .nav-icon */
+.sidebar-wrapper .nav-link > i:not(.nav-arrow) {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-width: 1.5rem;
+  min-width: 1.5rem;
+}
+
+
 div {
   &.mosaic-box {
     border-radius: 3px;
@@ -112,6 +133,17 @@ div {
   }
 }
 
+/* remove underlines from table data links, breadcrumb and classless content links */
+table.sonata-ba-list td a,
+.app-header .breadcrumb a,
+.app-content a:not([class]) {
+  text-decoration: none;
+}
+
+.app-header .breadcrumb a {
+  color: inherit;
+}
+
 .dropdown-add .dropdown-menu > li > a {
   overflow: hidden;
   white-space: normal;
@@ -135,6 +167,41 @@ div {
   padding: 15px;
 }
 
+.sidebar-search-results {
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
+  margin-bottom: 8px;
+  padding: 10px 15px;
+}
+
+/* sidebar search input — AdminLTE 4 removed form-control-sidebar/btn-sidebar; restyle manually */
+.form-control-sidebar {
+  background-color: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 15%);
+  color: #fff;
+
+  &::placeholder {
+    color: rgb(255 255 255 / 50%);
+  }
+
+  &:focus {
+    background-color: rgb(255 255 255 / 15%);
+    border-color: rgb(255 255 255 / 25%);
+    box-shadow: none;
+    color: #fff;
+  }
+}
+
+.btn-sidebar {
+  background-color: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 15%);
+  color: #fff;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 20%);
+    color: #fff;
+  }
+}
+
 .sidebar-menu li.keep-open > .nav-treeview {
   display: block !important;
   height: auto !important;
@@ -150,7 +217,7 @@ table.sonata-ba-list {
   }
 
   td {
-    overflow: auto;
+    overflow: visible;
   }
 }
 
@@ -232,6 +299,15 @@ div.sonata-filters-box div.mb-3 {
     font-size: 13px;
     padding: 3px 10px;
   }
+
+  &.row {
+    align-items: center;
+  }
+}
+
+div.sonata-filters-box .col-form-label {
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .sonata-search-result-hide {
@@ -254,6 +330,37 @@ div.sonata-filters-box div.mb-3 {
   &.active i::before {
     content: '\f14a'; // fa-check-square
   }
+}
+
+/* sonata action element - used as +Add / action links in navbar context */
+.sonata-action-element {
+  color: var(--bs-nav-link-color);
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: var(--bs-nav-link-hover-color);
+  }
+}
+
+/* when inside a dropdown menu */
+.dropdown-menu .sonata-action-element {
+  color: var(--bs-dropdown-link-color);
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: var(--bs-dropdown-link-hover-bg);
+    color: var(--bs-dropdown-link-hover-color);
+  }
+}
+
+/* inline action links (e.g. filter toggle, advanced filters) */
+.sonata-ba-action {
+  text-decoration: none;
 }
 
 [hidden] {

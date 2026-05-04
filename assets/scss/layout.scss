@@ -334,13 +334,15 @@ legend.sonata-ba-fieldset-collapsed-description + .sonata-ba-collapsed-fields {
 }
 
 .navbar.stuck {
+  border-bottom: 1px solid var(--bs-border-color);
   border-radius: 0;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
   margin-inline-start: -15px;
   position: fixed;
   top: 57px;
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
   width: calc(100% - 250px);
-  z-index: 5;
+  z-index: 1030;
 }
 
 .form-actions.stuck {

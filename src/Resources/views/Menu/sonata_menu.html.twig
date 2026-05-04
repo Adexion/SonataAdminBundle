@@ -32,8 +32,20 @@
     {%- else -%}
         {%- set icon = item.extra('icon')|parse_icon -%}
     {%- endif -%}
-    {%- set is_link = true -%}
-    {{ parent() }}
+    <a href="{{ item.uri }}" class="nav-link{% if item.current %} active{% endif %}">
+        {{ icon|raw }}
+        <p>
+            {%- set item_label = item.getLabel() -%}
+            {%- if options.allow_safe_labels and item.extra('safe_label', false) -%}
+                {{ item_label|raw }}
+            {%- else -%}
+                {{ item_label|trans(item.extra('label_translation_parameters', {}), translation_domain) }}
+            {%- endif -%}
+            {%- if item.hasChildren and (item.extra('keep_open') is not defined or not item.extra('keep_open')) -%}
+                <i class="nav-arrow fas fa-angle-right"></i>
+            {%- endif -%}
+        </p>
+    </a>
 {% endblock %}
 
 {% block spanElement %}
@@ -43,8 +55,13 @@
         {%- set icon = item.extra('icon')|default('')|parse_icon -%}
         {{ icon|raw }}
         <p>
-            {{ parent() }}
-            {%- if item.extra('keep_open') is not defined or not item.extra('keep_open') -%}
+            {%- set item_label = item.getLabel() -%}
+            {%- if options.allow_safe_labels and item.extra('safe_label', false) -%}
+                {{ item_label|raw }}
+            {%- else -%}
+                {{ item_label|trans(item.extra('label_translation_parameters', {}), translation_domain) }}
+            {%- endif -%}
+            {%- if item.hasChildren and (item.extra('keep_open') is not defined or not item.extra('keep_open')) -%}
                 <i class="nav-arrow fas fa-angle-right"></i>
             {%- endif -%}
         </p>
