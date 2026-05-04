@@ -18,7 +18,7 @@ file that was distributed with this source code.
     {% set visibility_class = 'sonata-search-result-' ~ (has_results ? 'show' : show_empty_boxes) %}
 
     <div class="col-lg-4 col-md-6 search-box-item {{ visibility_class }}">
-        <div class="card {{ visibility_class }}">
+        <div class="card mb-4 {{ visibility_class }}">
             <div class="card-header {{ visibility_class }}">
                 {{ settings.icon|default('')|parse_icon }}
                 <h3 class="card-title">
