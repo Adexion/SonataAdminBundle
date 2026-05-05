@@ -477,6 +477,16 @@ div.sonata-filters-box .col-form-label {
   color: #fff;
 }
 
+/* btn-group: subtle separator between adjacent same-color buttons */
+.btn-group > .btn + .btn {
+  border-left-color: rgb(0 0 0 / 20%);
+}
+
+/* standalone buttons not inside a btn-group: add gap between adjacent siblings */
+.btn:not(.btn-group .btn) + .btn:not(.btn-group .btn) {
+  margin-left: 0.25rem;
+}
+
 .card-body.p-0 .table tbody > tr > td:first-of-type,
 .card-body.p-0 .table tbody > tr > th:first-of-type,
 .card-body.p-0 .table tfoot > tr > td:first-of-type,
