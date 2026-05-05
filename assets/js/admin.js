@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import { Popover } from 'bootstrap';
+import { Popover, Tooltip } from 'bootstrap';
 import Config from './core/config';
 import Translation from './core/translation';
 
@@ -18,12 +18,18 @@ const Admin = {
    *
    * @param subject
    */
+  setup_tooltips(subject) {
+    subject.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+      new Tooltip(el);
+    });
+  },
   shared_setup(subject) {
     Admin.log('[core|shared_setup] Register services on', subject);
     Admin.setup_select2(subject);
     Admin.setup_checkbox_range_selection(subject);
     Admin.setup_inline_form_errors(subject);
     Admin.setup_tree_view(subject);
+    Admin.setup_tooltips(subject);
   },
   get_config(key) {
     return Config.param(key);

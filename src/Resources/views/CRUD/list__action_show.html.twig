@@ -13,8 +13,9 @@ file that was distributed with this source code.
     {% set button_content = sonata_config.getOption('list_action_button_content') %}
     <a
         href="{{ admin.generateObjectUrl('show', object, actions.link_parameters|default([])) }}"
-        class="btn btn-sm btn-secondary view_link"
+        class="btn btn-sm btn-light view_link"
         title="{{ 'action_show'|trans({}, 'SonataAdminBundle') }}"
+        data-bs-toggle="tooltip"
     >
         {% if button_content == 'icon' or button_content == 'all' %}
             <i class="fas fa-eye" aria-hidden="true"></i>

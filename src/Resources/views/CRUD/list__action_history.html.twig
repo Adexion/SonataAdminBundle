@@ -15,6 +15,7 @@ file that was distributed with this source code.
         href="{{ admin.generateObjectUrl('history', object, actions.link_parameters|default([])) }}"
         class="btn btn-sm btn-secondary view_link"
         title="{{ 'link_action_history'|trans({}, 'SonataAdminBundle') }}"
+        data-bs-toggle="tooltip"
     >
         {% if button_content == 'icon' or button_content == 'all' %}
             <i class="fas fa-history" aria-hidden="true"></i>
