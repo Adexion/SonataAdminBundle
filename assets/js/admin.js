@@ -20,7 +20,7 @@ const Admin = {
    */
   setup_tooltips(subject) {
     subject.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-      new Tooltip(el);
+      Tooltip.getOrCreateInstance(el);
     });
   },
   shared_setup(subject) {
