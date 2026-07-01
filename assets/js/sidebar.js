@@ -8,7 +8,8 @@
  */
 
 jQuery(() => {
-  jQuery('.sidebar-toggle').on('click', () => {
+  // AdminLTE 4 uses data-lte-toggle="sidebar" on the toggle button
+  jQuery('[data-lte-toggle="sidebar"]').on('click', () => {
     if (document.cookie.includes('sonata_sidebar_hide=1')) {
       document.cookie = 'sonata_sidebar_hide=0;path=/';
 

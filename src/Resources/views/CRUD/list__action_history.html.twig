@@ -13,8 +13,9 @@ file that was distributed with this source code.
     {% set button_content = sonata_config.getOption('list_action_button_content') %}
     <a
         href="{{ admin.generateObjectUrl('history', object, actions.link_parameters|default([])) }}"
-        class="btn btn-sm btn-default view_link"
+        class="btn btn-sm btn-secondary view_link"
         title="{{ 'link_action_history'|trans({}, 'SonataAdminBundle') }}"
+        data-bs-toggle="tooltip"
     >
         {% if button_content == 'icon' or button_content == 'all' %}
             <i class="fas fa-history" aria-hidden="true"></i>
@@ -22,7 +23,7 @@ file that was distributed with this source code.
         {% if button_content == 'text' or button_content == 'all' %}
             {{ 'link_action_history'|trans({}, 'SonataAdminBundle') }}
         {% else %}
-            <span class="sr-only">
+            <span class="visually-hidden">
                 {{ 'link_action_history'|trans({}, 'SonataAdminBundle') }}
             </span>
         {% endif %}

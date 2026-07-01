@@ -44,7 +44,7 @@ final class FormChoiceWidgetTest extends BaseWidgetTestCase
         $html = str_replace('value="0" />', 'value="0">', $html);
 
         static::assertStringContainsString(
-            '<li><div class="checkbox"><label><input type="checkbox" id="choice_0" name="choice[]" value="0"><span class="control-label__text">[trans]some[/trans]</span></label></div></li>',
+            '<li><div class="form-check"><label><input type="checkbox" id="choice_0" name="choice[]" value="0"><span class="control-label__text">[trans]some[/trans]</span></label></div></li>',
             $this->cleanHtmlWhitespace($html)
         );
     }

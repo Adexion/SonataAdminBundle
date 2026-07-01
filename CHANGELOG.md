@@ -2,6 +2,48 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+- Bootstrap 5 support (upgraded from Bootstrap 3)
+- AdminLTE 4 support (upgraded from AdminLTE 2), requires Bootstrap 5
+- FontAwesome 6 support (upgraded from FontAwesome 4)
+- Select2 Bootstrap 5 theme (`select2-bootstrap-5-theme`)
+- Bootstrap 3 / AdminLTE 2-3 CSS compatibility layer (`assets/scss/_compat.scss`) — deprecated, will be removed in 5.0
+- Bootstrap 3 / AdminLTE 2-3 JS data attribute shim (`assets/js/bs3-compat.js`) — deprecated, will be removed in 5.0
+
+### Changed
+- Select2 theme option changed from `bootstrap` to `bootstrap-5`
+- AdminLTE layout structure updated to AdminLTE 4 (`app-wrapper`, `app-header`, `app-sidebar`, `app-main`)
+- Sidebar toggle attribute changed from `data-widget="push-menu"` to `data-lte-toggle="sidebar"` (covered by JS shim)
+- All Bootstrap 3 class names migrated to Bootstrap 5 equivalents in all built-in templates
+- `admin_lte_skin_class` block now controls sidebar background class instead of body skin class
+
+### Deprecated
+- `assets/scss/_compat.scss` — Bootstrap 3 / AdminLTE 2-3 CSS aliases, will be removed in 5.0
+- `assets/js/bs3-compat.js` — Bootstrap 3 / AdminLTE 2-3 data attribute shim, will be removed in 5.0
+
+### Removed
+- `icheck` dependency — replaced by native Bootstrap 5 form-check styling
+- `x-editable` dependency — no Bootstrap 5 compatible version exists
+- `jquery-slimscroll` dependency — no longer needed in AdminLTE 4
+- `select2-bootstrap-theme` dependency — replaced by `select2-bootstrap-5-theme`
+- AdminLTE 2 skin CSS files copy from webpack config
+
+## [4.43.0](https://github.com/sonata-project/SonataAdminBundle/compare/4.42.0...4.43.0) - 2026-06-03
+### Added
+- [[#8381](https://github.com/sonata-project/SonataAdminBundle/pull/8381)] Support for symfony/stimulus-bundle 3. ([@virtualize](https://github.com/virtualize))
+- [[#8373](https://github.com/sonata-project/SonataAdminBundle/pull/8373)] Added optional flag to `FormErrorIteratorToConstraintViolationList::transform()` to sanitize error messages and prevent leaking sensitive information (e.g. internal file system paths) ([@micbis](https://github.com/micbis))
+- [[#8371](https://github.com/sonata-project/SonataAdminBundle/pull/8371)] Support for `doctrine/collections` 3 ([@dmaicher](https://github.com/dmaicher))
+
+### Fixed
+- [[#8382](https://github.com/sonata-project/SonataAdminBundle/pull/8382)] Do not generate the edit button URL in `edit_many_script` when the associated admin has no accessible `edit` route ([@EmmanuelVella](https://github.com/EmmanuelVella))
+
+### Removed
+- [[#8371](https://github.com/sonata-project/SonataAdminBundle/pull/8371)] Support for `doctrine/collections` < 2 ([@dmaicher](https://github.com/dmaicher))
+
+### Security
+- [[#8373](https://github.com/sonata-project/SonataAdminBundle/pull/8373)] Added opt-in protection against exposing sensitive system information (e.g. temporary upload paths) in validation error payloads ([@micbis](https://github.com/micbis))
+
 ## [4.42.0](https://github.com/sonata-project/SonataAdminBundle/compare/4.41.0...4.42.0) - 2026-01-05
 ### Changed
 - [[#8369](https://github.com/sonata-project/SonataAdminBundle/pull/8369)] The `symfony/security-acl` dependency is now optional. You need to explicitly require it as a dependency if you are using ACL. ([@dmaicher](https://github.com/dmaicher))

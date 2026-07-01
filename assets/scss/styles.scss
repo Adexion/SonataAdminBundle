@@ -8,30 +8,81 @@
  */
 
 /**
- * SonataAdminBundle Theme based on SB Admin v2.0
- * http://startbootstrap.com/templates/sb-admin-v2/
+ * SonataAdminBundle Theme based on AdminLTE 4 + Bootstrap 5
  */
+
+/* muted primary: replace Bootstrap's electric blue with a softer steel blue */
+:root {
+  --bs-primary: #3d6b99;
+  --bs-primary-rgb: 61, 107, 153;
+  --bs-link-color: #3d6b99;
+  --bs-link-color-rgb: 61, 107, 153;
+  --bs-link-hover-color: #315880;
+  --bs-link-hover-color-rgb: 49, 88, 128;
+  --bs-dropdown-link-active-bg: #3d6b99;
+  --bs-list-group-active-bg: #3d6b99;
+  --bs-list-group-active-border-color: #3d6b99;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #3d6b99;
+  --bs-btn-border-color: #3d6b99;
+  --bs-btn-hover-bg: #3d6b99;
+  --bs-btn-hover-border-color: #3d6b99;
+  --bs-btn-active-bg: #315880;
+  --bs-btn-active-border-color: #315880;
+  --bs-btn-disabled-color: #3d6b99;
+  --bs-btn-disabled-border-color: #3d6b99;
+  --bs-btn-focus-shadow-rgb: 61, 107, 153;
+}
+
+.nav-pills {
+  --bs-nav-pills-link-active-bg: #3d6b99;
+}
+
+.progress {
+  --bs-progress-bar-bg: #3d6b99;
+}
+
+.form-check-input:checked {
+  background-color: #3d6b99;
+  border-color: #3d6b99;
+}
+
+.form-check-input[type='checkbox']:indeterminate {
+  background-color: #3d6b99;
+  border-color: #3d6b99;
+}
+
+.form-check-input:focus,
+.form-control:focus,
+.form-select:focus {
+  border-color: #7da3c4;
+  box-shadow: 0 0 0 0.25rem rgb(61 107 153 / 25%);
+}
+
+.card-primary,
+.text-bg-primary {
+  --lte-card-variant-bg: #3d6b99;
+  --lte-card-variant-bg-rgb: 61, 107, 153;
+}
+
+.btn-primary {
+  --bs-btn-bg: #3d6b99;
+  --bs-btn-border-color: #3d6b99;
+  --bs-btn-hover-bg: #315880;
+  --bs-btn-hover-border-color: #2d527a;
+  --bs-btn-focus-shadow-rgb: 61, 107, 153;
+  --bs-btn-active-bg: #2d527a;
+  --bs-btn-active-border-color: #294d72;
+  --bs-btn-disabled-bg: #3d6b99;
+  --bs-btn-disabled-border-color: #3d6b99;
+}
 
 html {
   font-size: initial !important;
   min-height: 100%;
   position: relative;
-}
-
-footer {
-  background-color: #333;
-  bottom: 0;
-  height: 20px;
-  position: absolute;
-  width: 100%;
-
-  p {
-    margin: 0;
-  }
-
-  a {
-    color: #f6f6f6;
-  }
 }
 
 .logo {
@@ -54,16 +105,8 @@ footer {
   }
 }
 
-body > .header .logo {
+.brand-link .logo {
   font-family: 'Source Sans Pro', sans-serif;
-}
-
-.main-header {
-  height: 50px;
-}
-
-.open > .dropdown-menu {
-  animation-duration: 0.3s;
 }
 
 .dropdown-menu-scrollable {
@@ -71,29 +114,8 @@ body > .header .logo {
   overflow-y: auto;
 }
 
-/* Buttons */
-.btn.btn-outline {
-  background-color: transparent;
-  color: inherit;
-  transition: all 0.5s;
-}
-
-.btn.btn-primary.btn-outline:hover,
-.btn.btn-success.btn-outline:hover,
-.btn.btn-info.btn-outline:hover,
-.btn.btn-warning.btn-outline:hover,
-.btn.btn-danger.btn-outline:hover {
-  color: #fff;
-}
-
 /* navigation */
-.navbar-static-side li {
-  border-bottom: 1px solid #e7e7e7;
-}
-
 .navbar-brand {
-  padding-right: 20px;
-
   img {
     height: 28px;
     margin: 0;
@@ -102,34 +124,24 @@ body > .header .logo {
   }
 }
 
-.navbar-text .navbar-link {
-  padding: 0 10px;
+/* vertically center all navbar-nav items (breadcrumb, hamburger, etc.) */
+.app-header .navbar-nav {
+  align-items: center;
 }
 
-.content-header {
-  .navbar {
-    margin-bottom: 0;
-  }
+/* ensure right-side nav-links use flex so badges/icons align to center, not baseline */
+.app-header .navbar-nav.ms-auto .nav-link {
+  align-items: center;
+  display: flex;
 }
 
-.right-side > .content-header {
-  padding-bottom: 0;
-}
-
-.nav-second-level li {
-  border-bottom: none !important;
-
-  a {
-    padding-left: 37px;
-  }
-}
-
-.nav-third-level li {
-  border-bottom: none !important;
-
-  a {
-    padding-left: 52px;
-  }
+/* constrain sidebar icons to 1.5rem like AdminLTE 4's .nav-icon */
+.sidebar-wrapper .nav-link > i:not(.nav-arrow) {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-width: 1.5rem;
+  min-width: 1.5rem;
 }
 
 div {
@@ -188,14 +200,27 @@ div {
   }
 }
 
-.navbar-top-links li {
-  display: inline-block;
+/* remove underlines from breadcrumb and classless content links */
+.app-header .breadcrumb a,
+.app-content a:not([class]) {
+  color: inherit;
+  text-decoration: none;
+}
 
-  a,
-  span {
-    min-height: 50px;
-    padding: 15px;
+/* pagination: muted links, keep active page highlighted */
+.pagination .page-link {
+  color: var(--bs-secondary-color);
+
+  &:hover {
+    color: var(--bs-body-color);
   }
+}
+
+.pagination .page-item.active .page-link {
+  --bs-pagination-active-bg: #3d6b99;
+  --bs-pagination-active-border-color: #3d6b99;
+
+  color: #fff;
 }
 
 .dropdown-add .dropdown-menu > li > a {
@@ -203,74 +228,16 @@ div {
   white-space: normal;
 }
 
-.navbar-top-links {
-  > p,
-  > ul {
-    float: right;
-  }
-
-  .dropdown-menu {
-    li {
-      display: block;
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      a {
-        min-height: 0;
-        padding: 3px 20px;
-
-        div {
-          white-space: normal;
-        }
-      }
-    }
-  }
-
-  .dropdown-messages,
-  .dropdown-tasks,
-  .dropdown-alerts {
-    min-width: 0;
-    width: 310px;
-  }
-
-  .dropdown-messages {
-    margin-left: 5px;
-  }
-
-  .dropdown-tasks {
-    margin-left: -59px;
-  }
-
-  .dropdown-alerts {
-    margin-left: -123px;
-  }
-
-  .dropdown-user {
-    left: auto;
-    right: 0;
-  }
-}
-
-/* breadcrumb */
-.sonata-bc .breadcrumb {
-  background: inherit;
-  float: left;
-  margin: 0;
-  padding: 0;
-
-  li a {
-    display: inline-block;
-  }
-}
-
-.navbar-top-links .dropdown-menu li a:hover {
+/* remove underlines from non-button table links; inherit color only for plain/identifier links */
+table.sonata-ba-list td a:not(.btn) {
   text-decoration: none;
 }
 
-/* MEGA MENU STYLE
-********************************/
+table.sonata-ba-list td a:not(.btn, [class*='text-'], .badge) {
+  color: inherit;
+}
+
+/* MEGA MENU STYLE */
 .dropdown-menu .dropdown-menu {
   border: none !important;
   box-shadow: none !important;
@@ -283,56 +250,49 @@ div {
   min-width: 100px;
 }
 
-/* top right */
-.navbar-static-top {
-  margin-bottom: 0;
-}
-
-.skin-black .navbar .breadcrumb > li > a:hover {
-  background: #f5f5f5;
-  color: #444;
-}
-
-.skin-black .navbar .dropdown-menu > li > a:hover {
-  background-color: #f5f5f5;
-}
-
 /* sidebar menu styles */
 .sidebar-search {
   padding: 15px;
 }
 
-.sidebar-menu li.keep-open > .treeview-menu {
+.sidebar-search-results {
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
+  margin-bottom: 8px;
+  padding: 10px 15px;
+}
+
+/* sidebar search input — AdminLTE 4 removed form-control-sidebar/btn-sidebar; restyle manually */
+.form-control-sidebar {
+  background-color: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 15%);
+  color: #fff;
+
+  &::placeholder {
+    color: rgb(255 255 255 / 50%);
+  }
+
+  &:focus {
+    background-color: rgb(255 255 255 / 15%);
+    border-color: rgb(255 255 255 / 25%);
+    box-shadow: none;
+    color: #fff;
+  }
+}
+
+.btn-sidebar {
+  background-color: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 15%);
+  color: #fff;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 20%);
+    color: #fff;
+  }
+}
+
+.sidebar-menu li.keep-open > .nav-treeview {
   display: block !important;
   height: auto !important;
-}
-
-.arrow {
-  float: right;
-}
-
-.fa.arrow::before {
-  content: '\f104';
-}
-
-.active > a > .fa.arrow::before {
-  content: '\f107';
-}
-
-@media (width >= 768px) {
-  .navbar-static-side {
-    position: absolute;
-    width: 250px;
-    z-index: 1;
-  }
-
-  .navbar-top-links {
-    .dropdown-messages,
-    .dropdown-tasks,
-    .dropdown-alerts {
-      margin-left: auto;
-    }
-  }
 }
 
 /* Admin table */
@@ -345,19 +305,19 @@ table.sonata-ba-list {
   }
 
   td {
-    overflow: auto;
+    overflow: visible;
   }
 }
 
 td.sonata-ba-list-label {
   color: #565656;
   font-weight: bold;
-  text-align: right;
+  text-align: end;
   vertical-align: middle !important;
 }
 
 /* side filter */
-.box .box-header h4.box-title.filter_legend {
+.card .card-header h4.card-title.filter_legend {
   cursor: pointer;
   padding-left: 20px;
   position: relative;
@@ -390,120 +350,6 @@ tr.filter.active * {
   font-weight: bold;
 }
 
-form.sonata-filter-form.form-stacked {
-  padding-left: 0;
-}
-
-body.fixed .sonata-list-table {
-  margin-bottom: 5px;
-  margin-left: 15px;
-  margin-right: 15px;
-  position: relative;
-}
-
-.navbar-nav.navbar-right:last-child {
-  margin-right: 0;
-}
-
-/* Overrides */
-
-/* x-editable */
-td.sonata-ba-list-field {
-  .editable {
-    cursor: pointer;
-  }
-
-  .btn.editable {
-    border-bottom: solid 1px #bbb;
-  }
-
-  .editable-empty:not(.editable-open) {
-    display: none;
-  }
-}
-
-.sonata-ba-list tr:hover .editable-empty {
-  display: inline-block;
-}
-
-.editable-pre-wrapped {
-  white-space: normal;
-}
-
-.editable-container {
-  .prev::before {
-    content: '\2190 ';
-  }
-
-  .next::before {
-    content: '\2192 ';
-  }
-}
-
-/* bootstrap */
-.input-group-addon {
-  width: auto; /* See https://github.com/sonata-project/SonataAdminBundle/issues/2950 */
-}
-
-/**
- * Make checkbox / radio label consistant with other labels
- */
-.checkbox label,
-.radio label {
-  font-weight: 700;
-}
-
-/**
- * Undo Bootstrap styling for checkboxes and radio buttons when iCheck is in use.
- */
-body.sonata-icheck .checkbox label,
-body.sonata-icheck .radio label {
-  margin-left: 0;
-  padding-left: 0;
-}
-
-/**
- * The iCheck checkboxes & radios have 0 margin by default,
- * add some space for the label text.
- */
-.checkbox div[class^='icheckbox'],
-.checkbox-inline div[class^='icheckbox'],
-.radio div[class^='iradio'],
-.radio-inline div[class^='iradio'] {
-  margin-right: 5px;
-  margin-top: -3px;
-  position: relative;
-}
-
-.form-inline .checkbox div[class^='icheckbox'],
-.form-inline .checkbox-inline div[class^='icheckbox'],
-.form-inline .radio div[class^='iradio'],
-.form-inline .radio-inline div[class^='iradio'] {
-  margin-left: 0;
-  margin-right: 5px;
-  margin-top: -3px;
-  position: relative;
-}
-
-/* Hide Delete checkbox on sonata_type_collection tables */
-.sonata-ba-field-inline-table td > div.checkbox > label > .control-label__text {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-/* select2 */
-.select2-choice,
-.select2-choices,
-.select2-drop {
-  border-radius: 0 !important;
-}
-
 /* Used for the mosaic view */
 td > div.row {
   margin: 0;
@@ -532,19 +378,24 @@ div.mosaic-box.sonata-ba-list-row-selected {
   }
 }
 
-.modal .mosaic-inner-text .icheckbox_square-blue {
-  display: none;
-}
-
-div.sonata-filters-box div.form-group {
-  div.form-group {
+div.sonata-filters-box div.mb-3 {
+  div.mb-3 {
     margin: 0;
   }
 
-  span.input-group-addon {
+  span.input-group-text {
     font-size: 13px;
     padding: 3px 10px;
   }
+
+  &.row {
+    align-items: center;
+  }
+}
+
+div.sonata-filters-box .col-form-label {
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .sonata-search-result-hide {
@@ -569,6 +420,104 @@ div.sonata-filters-box div.form-group {
   }
 }
 
+/* sonata action element - used as +Add / action links in navbar context */
+.sonata-action-element {
+  color: var(--bs-nav-link-color);
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: var(--bs-nav-link-hover-color);
+  }
+}
+
+/* when inside a dropdown menu */
+.dropdown-menu .sonata-action-element {
+  color: var(--bs-dropdown-link-color);
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: var(--bs-dropdown-link-hover-bg);
+    color: var(--bs-dropdown-link-hover-color);
+  }
+}
+
+/* inline action links (e.g. filter toggle, advanced filters) */
+.sonata-ba-action {
+  text-decoration: none;
+}
+
 [hidden] {
   display: none !important;
+}
+
+/* AdminLTE 2/3 legacy color utilities — removed in AdminLTE 4 */
+.text-green {
+  color: var(--bs-success) !important;
+}
+
+.text-red {
+  color: var(--bs-danger) !important;
+}
+
+.text-orange {
+  color: #fd7e14 !important;
+}
+
+.text-yellow {
+  color: var(--bs-warning) !important;
+}
+
+/* info-box icons: AdminLTE 4 does not set color on info-box-icon, relies on text-bg-* */
+.info-box .info-box-icon {
+  color: #fff;
+}
+
+/* btn-group: subtle separator between adjacent same-color buttons */
+.btn-group > .btn + .btn {
+  border-left-color: rgb(0 0 0 / 20%);
+}
+
+/* standalone buttons not inside a btn-group: add gap between adjacent siblings */
+.btn:not(.btn-group .btn) + .btn:not(.btn-group .btn) {
+  margin-left: 0.25rem;
+}
+
+.card-body.p-0 .table tbody > tr > td:first-of-type,
+.card-body.p-0 .table tbody > tr > th:first-of-type,
+.card-body.p-0 .table tfoot > tr > td:first-of-type,
+.card-body.p-0 .table tfoot > tr > th:first-of-type,
+.card-body.p-0 .table thead > tr > td:first-of-type,
+.card-body.p-0 .table thead > tr > th:first-of-type {
+  padding: 0.9rem;
+}
+
+/* form tab error indicator icon */
+.has-errors {
+  color: var(--bs-danger);
+}
+
+/* small-box: AdminLTE 4 does not force white text on colored backgrounds */
+.small-box {
+  &.bg-primary,
+  &.bg-secondary,
+  &.bg-success,
+  &.bg-danger,
+  &.bg-warning,
+  &.bg-info,
+  &.bg-dark {
+    color: #fff;
+
+    .small-box-footer {
+      color: rgb(255 255 255 / 80%);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
 }

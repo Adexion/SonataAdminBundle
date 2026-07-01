@@ -17,10 +17,10 @@ file that was distributed with this source code.
     {% endif %}
 
     {% if inverse|default(false) ? not value : value %}
-        {% set class = 'label-success' %}
+        {% set class = 'text-bg-success' %}
     {% else %}
-        {% set class = 'label-danger' %}
+        {% set class = 'text-bg-danger' %}
     {% endif %}
 
-    <span class="label {{ class }}">{{ text }}</span>
+    <span class="badge {{ class }}">{{ text }}</span>
 {% endapply -%}
