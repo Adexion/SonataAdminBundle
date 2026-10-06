@@ -32,13 +32,13 @@
   padding: 7px 15px 7px 7px;
   position: relative;
 
-  .label {
+  .badge {
     border-radius: 2px;
     font-size: 12px;
     margin-top: 2px;
   }
 
-  .label-warning {
+  .badge.bg-warning {
     margin-right: 5px;
   }
 

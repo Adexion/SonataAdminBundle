@@ -14,7 +14,7 @@ file that was distributed with this source code.
 {% block title %}{{ 'title_search_results'|trans({'%query%': query}, 'SonataAdminBundle') }}{% endblock %}
 {% block breadcrumb %}{% endblock %}
 {% block content %}
-    <h2 class="page-header">{{ 'title_search_results'|trans({'%query%': query}, 'SonataAdminBundle') }}</h2>
+    <h2 class="mb-4 pb-2 border-bottom">{{ 'title_search_results'|trans({'%query%': query}, 'SonataAdminBundle') }}</h2>
 
     {% if query is defined and query is not same as(false) %}
         {% set count = 0 %}

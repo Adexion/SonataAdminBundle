@@ -1,0 +1,84 @@
+name: Sync upstream
+
+on:
+    schedule:
+        # Run every Monday at 06:00 UTC
+        - cron: '0 6 * * 1'
+    workflow_dispatch:
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    sync:
+        name: Sync with sonata-project/SonataAdminBundle 4.x
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout fork
+              uses: actions/checkout@v4
+              with:
+                  ref: claude/upgrade-sonata-admin-frontend-I91tj
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Configure git
+              run: |
+                  git config user.name  "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+
+            - name: Add upstream remote
+              run: git remote add upstream https://github.com/sonata-project/SonataAdminBundle.git
+
+            - name: Fetch upstream 4.x
+              run: git fetch upstream 4.x
+
+            - name: Attempt merge
+              id: merge
+              run: |
+                  if git merge --no-commit --no-ff upstream/4.x; then
+                      if git diff --cached --quiet; then
+                          echo "status=up-to-date" >> "$GITHUB_OUTPUT"
+                      else
+                          echo "status=merged" >> "$GITHUB_OUTPUT"
+                      fi
+                  else
+                      git merge --abort || true
+                      echo "status=conflict" >> "$GITHUB_OUTPUT"
+                  fi
+
+            - name: Push clean merge
+              if: steps.merge.outputs.status == 'merged'
+              run: |
+                  git commit -m "chore: sync upstream sonata-project/SonataAdminBundle 4.x $(date +%Y-%m-%d)"
+                  git push origin claude/upgrade-sonata-admin-frontend-I91tj
+
+            - name: Open PR on conflict
+              if: steps.merge.outputs.status == 'conflict'
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  BRANCH="sync-upstream-$(date +%Y%m%d)"
+                  git checkout -b "$BRANCH"
+                  git merge upstream/4.x || true
+                  git add -A
+                  git commit -m "chore: sync upstream $(date +%Y-%m-%d) — conflict markers left for manual resolution"
+                  git push origin "$BRANCH"
+                  gh pr create \
+                      --title "chore: sync upstream $(date +%Y-%m-%d) — manual conflict resolution needed" \
+                      --body "Automated sync with [sonata-project/SonataAdminBundle 4.x](https://github.com/sonata-project/SonataAdminBundle/tree/4.x) failed due to merge conflicts.
+
+                  Review the diff and resolve conflict markers before merging into \`claude/upgrade-sonata-admin-frontend-I91tj\`.
+
+                  **Conflicts are most likely in files modified by the frontend upgrade:**
+                  - \`assets/\` (JS/SCSS)
+                  - \`src/Resources/views/\` (Twig templates)
+                  - \`package.json\`, \`webpack.config.js\`" \
+                      --base claude/upgrade-sonata-admin-frontend-I91tj \
+                      --head "$BRANCH"
+
+            - name: Log up-to-date
+              if: steps.merge.outputs.status == 'up-to-date'
+              run: echo "Branch is already up to date with upstream."

@@ -1,0 +1,642 @@
+// NEXT_MAJOR: Remove this file.
+
+/*!
+ * This file is part of the Sonata Project package.
+ *
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @deprecated since sonata-project/admin-bundle 4.x and will be removed in 5.0.
+ *
+ * Bootstrap 3 / AdminLTE 2-3 CSS compatibility aliases.
+ * Allows templates still using old class names (box, pull-right, label-*, etc.)
+ * to render correctly without immediate migration.
+ * For data attribute migration see assets/js/bs3-compat.js.
+ */
+
+// ---------------------------------------------------------------------------
+// Float utilities
+// ---------------------------------------------------------------------------
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+// ---------------------------------------------------------------------------
+// Display / visibility utilities (Bootstrap 3)
+// ---------------------------------------------------------------------------
+
+.hide {
+  display: none !important;
+}
+
+.hidden-lg {
+  @media (width >= 1200px) {
+    display: none !important;
+  }
+}
+
+.hidden-md {
+  @media (992px <= width < 1200px) {
+    display: none !important;
+  }
+}
+
+.hidden-sm {
+  @media (768px <= width < 992px) {
+    display: none !important;
+  }
+}
+
+.hidden-xs {
+  @media (width < 768px) {
+    display: none !important;
+  }
+}
+
+.visible-xs {
+  @media (width >= 768px) {
+    display: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Spacing utilities
+// ---------------------------------------------------------------------------
+
+.no-padding,
+.nopadding {
+  padding: 0 !important;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 grid col-xs-* (removed in BS4+)
+// ---------------------------------------------------------------------------
+
+.col-xs-1 {
+  flex: 0 0 auto;
+  max-width: 8.3333%;
+  width: 8.3333%;
+}
+
+.col-xs-2 {
+  flex: 0 0 auto;
+  max-width: 16.6667%;
+  width: 16.6667%;
+}
+
+.col-xs-3 {
+  flex: 0 0 auto;
+  max-width: 25%;
+  width: 25%;
+}
+
+.col-xs-4 {
+  flex: 0 0 auto;
+  max-width: 33.3333%;
+  width: 33.3333%;
+}
+
+.col-xs-5 {
+  flex: 0 0 auto;
+  max-width: 41.6667%;
+  width: 41.6667%;
+}
+
+.col-xs-6 {
+  flex: 0 0 auto;
+  max-width: 50%;
+  width: 50%;
+}
+
+.col-xs-7 {
+  flex: 0 0 auto;
+  max-width: 58.3333%;
+  width: 58.3333%;
+}
+
+.col-xs-8 {
+  flex: 0 0 auto;
+  max-width: 66.6667%;
+  width: 66.6667%;
+}
+
+.col-xs-9 {
+  flex: 0 0 auto;
+  max-width: 75%;
+  width: 75%;
+}
+
+.col-xs-10 {
+  flex: 0 0 auto;
+  max-width: 83.3333%;
+  width: 83.3333%;
+}
+
+.col-xs-11 {
+  flex: 0 0 auto;
+  max-width: 91.6667%;
+  width: 91.6667%;
+}
+
+.col-xs-12 {
+  flex: 0 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 btn-default → btn-secondary
+// ---------------------------------------------------------------------------
+
+.btn-default {
+  --bs-btn-active-bg: #5c636a;
+  --bs-btn-active-border-color: #565e64;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-shadow: inset 0 3px 5px rgb(0 0 0 / 12.5%);
+  --bs-btn-bg: #6c757d;
+  --bs-btn-border-color: #6c757d;
+  --bs-btn-color: #fff;
+  --bs-btn-disabled-bg: #6c757d;
+  --bs-btn-disabled-border-color: #6c757d;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-focus-shadow-rgb: 130, 138, 145;
+  --bs-btn-hover-bg: #5c636a;
+  --bs-btn-hover-border-color: #565e64;
+  --bs-btn-hover-color: #fff;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 labels → Bootstrap 5 badges
+// class="label label-primary" still works visually
+// ---------------------------------------------------------------------------
+
+.label {
+  border-radius: var(--bs-badge-border-radius, 0.375rem);
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.35em 0.65em;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.label-danger {
+  background-color: var(--bs-danger);
+  color: #fff;
+}
+
+.label-default {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.label-info {
+  background-color: var(--bs-info);
+  color: #000;
+}
+
+.label-primary {
+  background-color: var(--bs-primary);
+  color: #fff;
+}
+
+.label-success {
+  background-color: var(--bs-success);
+  color: #fff;
+}
+
+.label-warning {
+  background-color: var(--bs-warning);
+  color: #000;
+}
+
+// ---------------------------------------------------------------------------
+// AdminLTE 2/3 content box → Bootstrap 5 card
+// ---------------------------------------------------------------------------
+
+.box {
+  // Form groups render .card-body/.card-header inside .box; their padding reads
+  // --bs-card-spacer-*, which Bootstrap declares only on .card. Without these
+  // the padding collapses to zero and fields touch the box edge.
+  --bs-card-spacer-x: 1rem;
+  --bs-card-spacer-y: 1rem;
+
+  background-clip: border-box;
+  background-color: var(--bs-card-bg, #fff);
+  border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgb(0 0 0 / 12.5%));
+  border-radius: var(--bs-card-border-radius, 0.375rem);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  min-width: 0;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.box-body {
+  flex: 1 1 auto;
+  padding: var(--bs-card-spacer-y, 1rem) var(--bs-card-spacer-x, 1rem);
+}
+
+.box-danger {
+  border-top: 3px solid var(--bs-danger);
+}
+
+.box-footer {
+  background-color: var(--bs-card-cap-bg, rgb(0 0 0 / 3%));
+  border-top: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgb(0 0 0 / 12.5%));
+  padding: var(--bs-card-cap-padding-y, 0.5rem) var(--bs-card-cap-padding-x, 1rem);
+}
+
+.box-header {
+  align-items: center;
+  background-color: var(--bs-card-cap-bg, rgb(0 0 0 / 3%));
+  border-bottom: var(--bs-card-border-width, 1px) solid
+    var(--bs-card-border-color, rgb(0 0 0 / 12.5%));
+  display: flex;
+  padding: var(--bs-card-cap-padding-y, 0.5rem) var(--bs-card-cap-padding-x, 1rem);
+}
+
+.box-info {
+  border-top: 3px solid var(--bs-info);
+}
+
+.box-primary {
+  border-top: 3px solid var(--bs-primary);
+}
+
+.box-success {
+  border-top: 3px solid var(--bs-success);
+}
+
+.box-title {
+  font-size: 1.25rem;
+  margin-bottom: 0;
+}
+
+.box-tools {
+  margin-left: auto;
+}
+
+.box-warning {
+  border-top: 3px solid var(--bs-warning);
+}
+
+.with-border {
+  border-bottom: 1px solid var(--bs-card-border-color, rgb(0 0 0 / 12.5%));
+}
+
+// ---------------------------------------------------------------------------
+// AdminLTE 2/3 info-box color aliases
+// ---------------------------------------------------------------------------
+
+.bg-aqua,
+.bg-light-blue {
+  background-color: #17a2b8 !important;
+}
+
+.bg-aqua-active {
+  background-color: #1291aa !important;
+}
+
+.bg-fuchsia {
+  background-color: #f012be !important;
+}
+
+.bg-lime {
+  background-color: #01ff70 !important;
+  color: #000;
+}
+
+.bg-maroon {
+  background-color: #d81b60 !important;
+}
+
+.bg-navy {
+  background-color: #001f3f !important;
+}
+
+.bg-olive {
+  background-color: #3d9970 !important;
+}
+
+.bg-orange {
+  background-color: #ff851b !important;
+}
+
+.bg-purple {
+  background-color: #6f42c1 !important;
+  color: #fff;
+}
+
+.bg-red {
+  background-color: var(--bs-danger) !important;
+  color: #fff;
+}
+
+.bg-blue {
+  background-color: var(--bs-primary) !important;
+  color: #fff;
+}
+
+.bg-green {
+  background-color: var(--bs-success) !important;
+  color: #fff;
+}
+
+.bg-gray {
+  background-color: var(--bs-secondary-bg) !important;
+  color: #000;
+}
+
+.bg-teal {
+  background-color: #20c997 !important;
+}
+
+.bg-yellow {
+  background-color: #ffc107 !important;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 sr-only → visually-hidden
+// ---------------------------------------------------------------------------
+
+// .visually-hidden carries !important, so a later .control-label margin cannot unhide it
+.sr-only {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+  @extend .visually-hidden;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 tab pane: "fade in active" → "fade show active"
+// ---------------------------------------------------------------------------
+
+.fade.in {
+  opacity: 1;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 help-block → form-text
+// ---------------------------------------------------------------------------
+
+.help-block {
+  color: #6c757d;
+  display: block;
+  font-size: 0.875em;
+  margin-top: 0.25rem;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 form-group has-error state
+// ---------------------------------------------------------------------------
+
+@each $state, $color in (error: danger, success: success, warning: warning) {
+  .has-#{$state} {
+    .form-control,
+    .form-select {
+      border-color: var(--bs-#{$color});
+    }
+
+    .control-label,
+    .help-block {
+      color: var(--bs-#{$color});
+    }
+  }
+}
+
+.has-error label {
+  color: var(--bs-danger);
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 checkbox / radio wrappers
+// ---------------------------------------------------------------------------
+
+div.checkbox,
+div.radio {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+  position: relative;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 classes with a 1:1 Bootstrap 5 equivalent
+// @extend copies the real BS5 rules, including contextual ones such as
+// `.input-group-lg > .input-group-text` or input-group border merging.
+// ---------------------------------------------------------------------------
+
+/* stylelint-disable scss/at-extend-no-missing-placeholder -- an alias has to copy the real BS5 class rules */
+
+.input-group-addon {
+  @extend .input-group-text;
+}
+
+.input-sm {
+  @extend .form-control-sm;
+}
+
+.form-control-static {
+  @extend .form-control-plaintext;
+}
+
+.img-responsive {
+  @extend .img-fluid;
+
+  display: block;
+}
+
+.text-right {
+  @extend .text-end;
+}
+
+.text-left {
+  @extend .text-start;
+}
+
+.text-bold {
+  @extend .fw-bold;
+}
+
+.hidden {
+  @extend .d-none;
+}
+
+@each $breakpoint in (sm, md, lg) {
+  @for $i from 1 through 11 {
+    .col-#{$breakpoint}-offset-#{$i} {
+      @extend .offset-#{$breakpoint}-#{$i};
+    }
+  }
+}
+
+@each $color in (primary, secondary, success, info, warning, danger) {
+  .badge-#{$color} {
+    @extend .text-bg-#{$color};
+  }
+}
+
+.badge-default {
+  @extend .text-bg-secondary;
+}
+
+/* stylelint-enable scss/at-extend-no-missing-placeholder */
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 panel / well → Bootstrap 5 card
+// ---------------------------------------------------------------------------
+
+// Explicit on purpose: @extend .card would also copy every AdminLTE card
+// variant (card-outline, collapsed-card, ...) onto .panel.
+.panel {
+  background-clip: border-box;
+  background-color: var(--bs-body-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  min-width: 0;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.panel-heading {
+  background-color: var(--bs-tertiary-bg);
+  border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+  border-top-left-radius: var(--bs-border-radius);
+  border-top-right-radius: var(--bs-border-radius);
+  padding: 0.5rem 1rem;
+}
+
+.panel-body {
+  padding: 1rem;
+}
+
+.panel-footer {
+  background-color: var(--bs-tertiary-bg);
+  border-top: var(--bs-border-width) solid var(--bs-border-color);
+  padding: 0.5rem 1rem;
+}
+
+.panel-title {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.well {
+  background-color: var(--bs-tertiary-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 input-group pieces without a BS5 counterpart
+// ---------------------------------------------------------------------------
+
+// BS3 state colours on inline addons (e.g. margin status %): a bare
+// .alert-* without .alert only sets variables in BS5 and paints nothing.
+@each $color in (success, danger, warning) {
+  .input-group-addon.alert-#{$color} {
+    background-color: var(--bs-#{$color}-bg-subtle);
+    border-color: var(--bs-#{$color}-border-subtle);
+    color: var(--bs-#{$color}-text-emphasis);
+  }
+}
+
+.input-group-btn {
+  display: flex;
+
+  > .btn {
+    border-radius: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Other Bootstrap 3 / AdminLTE 2 leftovers
+// ---------------------------------------------------------------------------
+
+.btn-xs,
+.btn-group-xs > .btn {
+  border-radius: 0.2rem;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.4rem;
+}
+
+.control-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-horizontal .control-label {
+  text-align: right;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// BS5 dropdown-toggle draws its own caret via ::after
+.caret {
+  display: none;
+}
+
+// BS5 uses .btn-close (SVG); legacy markup still renders a text "×" inside .close
+.close {
+  background: transparent;
+  border: 0;
+  color: #000;
+  cursor: pointer;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.5;
+  padding: 0;
+  text-shadow: 0 1px 0 #fff;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.table-condensed {
+  --bs-table-cell-padding-x: 0.25rem;
+  --bs-table-cell-padding-y: 0.25rem;
+}
+
+.navbar-default {
+  background-color: var(--bs-tertiary-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  padding: 0.5rem 1rem;
+}
+
+.navbar-left {
+  margin-right: auto;
+}
+
+.navbar-right {
+  margin-left: auto;
+}
+
+.text-purple {
+  color: #6f42c1 !important;
+}
+
+.text-light-blue {
+  color: var(--bs-info) !important;
+}

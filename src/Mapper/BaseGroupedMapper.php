@@ -80,7 +80,7 @@ abstract class BaseGroupedMapper implements MapperInterface
             'label' => $this->getAdmin()->getLabelTranslatorStrategy()->getLabel($name, $this->getName(), 'group'),
             'translation_domain' => null,
             'name' => $name,
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
         ];
@@ -107,9 +107,7 @@ abstract class BaseGroupedMapper implements MapperInterface
                 throw new \LogicException(\sprintf('You should open tab before adding new group "%s".', $name));
             }
 
-            if (!isset($tabs[$name])) {
-                $tabs[$name] = [];
-            }
+            $tabs[$name] ??= [];
 
             $tabs[$code] = array_merge($defaultOptions, [
                 'auto_created' => false,
@@ -143,9 +141,7 @@ abstract class BaseGroupedMapper implements MapperInterface
             }
 
             $groups = $this->getGroups();
-            if (!isset($groups[$code])) {
-                $groups[$code] = [];
-            }
+            $groups[$code] ??= [];
 
             $groups[$code] = array_merge($defaultOptions, [
                 'fields' => [],

@@ -68,9 +68,7 @@ final class FormMapperTest extends TestCase
         $this->admin = new CleanAdmin();
         $this->admin->setModelClass(\stdClass::class);
         $this->admin->setSubject(new \stdClass());
-
-        $modelManager = $this->createMock(ModelManagerInterface::class);
-        $this->admin->setModelManager($modelManager);
+        $this->admin->setModelManager(static::createStub(ModelManagerInterface::class));
 
         $securityHandler = static::createStub(SecurityHandlerInterface::class);
         $securityHandler
@@ -112,7 +110,7 @@ final class FormMapperTest extends TestCase
             'label' => 'default',
             'translation_domain' => null,
             'name' => 'default',
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
             'auto_created' => true,
@@ -127,7 +125,7 @@ final class FormMapperTest extends TestCase
             'label' => 'foobar',
             'translation_domain' => null,
             'name' => 'foobar',
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
             'fields' => [],
@@ -148,7 +146,7 @@ final class FormMapperTest extends TestCase
             'label' => 'foobar',
             'translation_domain' => 'Foobar',
             'name' => 'foobar',
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
             'fields' => [],
@@ -162,7 +160,7 @@ final class FormMapperTest extends TestCase
             'label' => 'default',
             'translation_domain' => 'Foobar',
             'name' => 'default',
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
             'auto_created' => true,
@@ -198,7 +196,7 @@ final class FormMapperTest extends TestCase
             'label' => 'default',
             'translation_domain' => 'Foobar',
             'name' => 'default',
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
             'auto_created' => true,
@@ -213,7 +211,7 @@ final class FormMapperTest extends TestCase
             'label' => 'foobar',
             'translation_domain' => 'Foobar',
             'name' => 'foobar',
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
             'fields' => [
@@ -248,7 +246,7 @@ final class FormMapperTest extends TestCase
             'label' => 'default',
             'translation_domain' => false,
             'name' => 'default',
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
             'auto_created' => true,
@@ -263,7 +261,7 @@ final class FormMapperTest extends TestCase
             'label' => 'foobar',
             'translation_domain' => false,
             'name' => 'foobar',
-            'box_class' => 'box box-primary',
+            'box_class' => 'card card-primary card-outline mb-4',
             'empty_message' => 'message_form_group_empty',
             'empty_message_translation_domain' => 'SonataAdminBundle',
             'fields' => [

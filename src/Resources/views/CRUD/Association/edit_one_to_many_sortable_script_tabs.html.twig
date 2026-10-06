@@ -20,10 +20,10 @@ file that was distributed with this source code.
         // update the input value position
         jQuery('div#field_container_{{ id }} .sonata-ba-tabs .sonata-ba-field-{{ id }}-{{ sonata_admin.field_description.option('sortable') }}').each(function(index, element) {
             // remove the sortable handler and put it back
-            var parent = jQuery(element).closest('.nav-tabs-custom');
+            var parent = jQuery(element).closest('.sonata-ba-tabs > div > div');
             var tabs = parent.find('> .nav-tabs');
             jQuery('.sonata-ba-sortable-handler', tabs).remove();
-            $('<li class="sonata-ba-sortable-handler pull-right"></li>')
+            $('<li class="sonata-ba-sortable-handler float-end"></li>')
                     .prepend('<i class="fas fa-grip-lines"></i>')
                     .appendTo(tabs);
             jQuery('input', element).hide();

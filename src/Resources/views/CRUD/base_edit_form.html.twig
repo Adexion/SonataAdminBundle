@@ -9,7 +9,6 @@
         </div>
     {% else %}
         <form
-              {% if sonata_config.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
               role="form"
               action="{% block sonata_form_action_url %}{{ admin.generateUrl(url, {(admin.idParameter): objectId, 'uniqid': admin.uniqid, 'subclass': app.request.attributes.get('subclass', app.request.query.get('subclass', app.request.request.get('subclass')))}) }}{% endblock %}"
               {% if form.vars.multipart %} enctype="multipart/form-data"{% endif %}
@@ -43,12 +42,17 @@
                     {% if has_tab %}
                         {% set tab_prefix = 'tab_' ~ admin.uniqid ~ '_' ~ random() %}
                         {% set tab_query_index = app.request.query.get('_tab', 0)|split("_")|last %}
-                        <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs" role="tablist">
+                        <div>
+                            <ul class="nav nav-tabs mb-3" role="tablist">
                                 {% for name, form_tab in formtabs %}
                                     {% set _tab_name = tab_prefix ~ '_' ~ loop.index %}
-                                    <li{% if (not app.request.query.has('_tab') and loop.index == 1) or (tab_query_index == loop.index) %} class="active"{% endif %}>
-                                        <a href="#{{ _tab_name }}" class="changer-tab" aria-controls="{{ _tab_name }}" data-toggle="tab" {{ stimulus_target('sonata-edit', 'tab') }} {{ stimulus_action('sonata-edit', 'changeTab', 'click') }}>
+                                    <li class="nav-item">
+                                        <a href="#{{ _tab_name }}"
+                                           class="nav-link changer-tab{% if (not app.request.query.has('_tab') and loop.index == 1) or (tab_query_index == loop.index) %} active{% endif %}"
+                                           aria-controls="{{ _tab_name }}"
+                                           data-bs-toggle="tab"
+                                           {{ stimulus_target('sonata-edit', 'tab') }}
+                                           {{ stimulus_action('sonata-edit', 'changeTab', 'click') }}>
                                             <i class="fas fa-exclamation-circle has-errors" aria-hidden="true" hidden></i>
                                             {% if form_tab.translation_domain is defined and form_tab.translation_domain is same as(false) %}
                                                 {{ form_tab.label }}
@@ -63,10 +67,10 @@
                                 {% for code, form_tab in formtabs %}
                                     {% set _tab_name = tab_prefix ~ '_' ~ loop.index %}
                                     <div
-                                        class="tab-pane fade{% if (not app.request.query.has('_tab') and loop.first) or (tab_query_index == loop.index) %} in active{% endif %}"
+                                        class="tab-pane fade{% if (not app.request.query.has('_tab') and loop.first) or (tab_query_index == loop.index) %} show active{% endif %}"
                                         id="{{ _tab_name }}"
                                     >
-                                        <div class="box-body  container-fluid">
+                                        <div class="container-fluid">
                                             <div class="sonata-ba-collapsed-fields">
                                                 {% if form_tab.description != false %}
                                                     {% if form_tab.translation_domain is defined and form_tab.translation_domain is same as(false) %}
@@ -97,7 +101,7 @@
             {{ form_rest(form) }}
 
             {% block formactions %}
-                <div class="sonata-ba-form-actions well well-small form-actions" {{ stimulus_target('sonata-sticky', 'action') }}>
+                <div class="sonata-ba-form-actions card-footer form-actions" {{ stimulus_target('sonata-sticky', 'action') }}>
                 {% block sonata_form_actions %}
                     {% if app.request.isxmlhttprequest %}
                         {% if objectId is not null %}

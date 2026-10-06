@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 
+import { Popover, Tooltip } from 'bootstrap';
 import Config from './core/config';
 import Translation from './core/translation';
 
@@ -17,14 +18,18 @@ const Admin = {
    *
    * @param subject
    */
+  setup_tooltips(subject) {
+    subject.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+      Tooltip.getOrCreateInstance(el);
+    });
+  },
   shared_setup(subject) {
     Admin.log('[core|shared_setup] Register services on', subject);
     Admin.setup_select2(subject);
-    Admin.setup_icheck(subject);
     Admin.setup_checkbox_range_selection(subject);
-    Admin.setup_xeditable(subject);
     Admin.setup_inline_form_errors(subject);
     Admin.setup_tree_view(subject);
+    Admin.setup_tooltips(subject);
   },
   get_config(key) {
     return Config.param(key);
@@ -93,7 +98,7 @@ const Admin = {
 
         select.select2({
           width: () => Admin.get_select2_width(select),
-          theme: 'bootstrap',
+          theme: 'bootstrap-5',
           dropdownAutoWidth: true,
           minimumResultsForSearch,
           placeholder: allowClearEnabled ? ' ' : '', // allowClear needs placeholder to work properly
@@ -103,31 +108,13 @@ const Admin = {
         });
 
         if (undefined !== popover) {
-          select.select2('container').popover(popover.options);
+          const container = select.select2('container')[0];
+          if (container) {
+            // eslint-disable-next-line no-new
+            new Popover(container, popover.options);
+          }
         }
       });
-    }
-  },
-  setup_icheck(subject) {
-    if (Admin.get_config('USE_ICHECK')) {
-      Admin.log('[core|setup_icheck] configure iCheck on', subject);
-
-      const inputs = jQuery(
-        'input[type="checkbox"]:not(label.btn > input, [data-sonata-icheck="false"]), input[type="radio"]:not(label.btn > input, [data-sonata-icheck="false"])',
-        subject
-      );
-      inputs.iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-      });
-
-      // In case some checkboxes were already checked (for instance after moving
-      // back in the browser's session history) update iCheck checkboxes.
-      if (subject === window.document) {
-        setTimeout(() => {
-          inputs.iCheck('update');
-        }, 0);
-      }
     }
   },
   /**
@@ -145,17 +132,9 @@ const Admin = {
     );
 
     let previousIndex;
-    const useICheck = Admin.get_config('USE_ICHECK');
 
-    // When a checkbox or an iCheck helper is clicked
-    jQuery('tbody input[type="checkbox"], tbody .iCheck-helper', subject).on('click', (event) => {
-      let input;
-
-      if (useICheck) {
-        input = jQuery(event.target).prev('input[type="checkbox"]');
-      } else {
-        input = jQuery(event.target);
-      }
+    jQuery('tbody input[type="checkbox"]', subject).on('click', (event) => {
+      const input = jQuery(event.target);
 
       if (input.length) {
         const currentIndex = input.closest('tr').index();
@@ -166,18 +145,11 @@ const Admin = {
             subject
           ).prop('checked');
 
-          // Check all checkbox between previous and current one clicked
           jQuery('tbody input[type="checkbox"]', subject).each((index, element) => {
             if (
               (index > previousIndex && index < currentIndex) ||
-              (indexedDB > currentIndex && index < previousIndex)
+              (index > currentIndex && index < previousIndex)
             ) {
-              if (useICheck) {
-                jQuery(element).iCheck(isChecked ? 'check' : 'uncheck');
-
-                return;
-              }
-
               jQuery(element).prop('checked', isChecked);
             }
           });
@@ -185,29 +157,6 @@ const Admin = {
 
         previousIndex = currentIndex;
       }
-    });
-  },
-
-  setup_xeditable(subject) {
-    Admin.log('[core|setup_xeditable] configure xeditable on', subject);
-    jQuery('.x-editable', subject).editable({
-      emptyclass: 'editable-empty btn btn-sm btn-default',
-      emptytext: '<i class="fas fa-pencil-alt"></i>',
-      container: 'body',
-      placement: 'auto',
-      success(response) {
-        const html = jQuery(response);
-        Admin.setup_xeditable(html);
-        jQuery(this).closest('td').replaceWith(html);
-      },
-      error: (xhr) => {
-        // On some error responses, we return JSON.
-        if (xhr.getResponseHeader('Content-Type') === 'application/json') {
-          return JSON.parse(xhr.responseText);
-        }
-
-        return xhr.responseText;
-      },
     });
   },
 
@@ -271,7 +220,6 @@ const Admin = {
 
     // this code is an adaptation of select2 code (initContainerWidth function)
     let style = element.attr('style');
-    // console.log("main style", style);
 
     if (style !== undefined) {
       const attrs = style.split(';');
@@ -318,7 +266,7 @@ const Admin = {
     }
 
     const options = {
-      theme: 'bootstrap',
+      theme: 'bootstrap-5',
       width: () => Admin.get_select2_width(subject),
       dropdownAutoWidth: true,
       data: [...selectedItems, ...unselectedItems],
@@ -380,7 +328,6 @@ jQuery(() => {
 
 jQuery(document).on('sonata-admin-append-form-element', (event) => {
   Admin.setup_select2(event.target);
-  Admin.setup_icheck(event.target);
 });
 
 jQuery(() => {

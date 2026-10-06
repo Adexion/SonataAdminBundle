@@ -28,7 +28,7 @@ final class AdminLayoutTest extends AbstractLayoutTestCase
 
         $expression = <<<'EOD'
             /label
-                [@class="col-sm-3 control-label required"]
+                [@class="col-sm-3 col-form-label required"]
                 [@for="name"]
                 [.="[trans]Name[/trans]"]
             EOD;
@@ -50,7 +50,7 @@ final class AdminLayoutTest extends AbstractLayoutTestCase
 
         $expression = <<<'EOD'
             /label
-                [@class="col-sm-3 control-label required"]
+                [@class="col-sm-3 col-form-label required"]
                 [@for="name"]
                 [.="Name"]
             EOD;
@@ -72,7 +72,7 @@ final class AdminLayoutTest extends AbstractLayoutTestCase
 
         $expression = <<<'EOD'
             /label
-                [@class="col-sm-3 control-label required"]
+                [@class="col-sm-3 col-form-label required"]
                 [@for="name"]
                 [.="[trans domain=custom_domain]Name[/trans]"]
             EOD;
@@ -91,7 +91,7 @@ final class AdminLayoutTest extends AbstractLayoutTestCase
 
         $expression = <<<'EOD'
             /label
-                [@class="col-sm-3 control-label required"]
+                [@class="col-sm-3 col-form-label required"]
                 [@for="name"]
                 [.="[trans domain=sonata_translation_domain]Name[/trans]"]
             EOD;
@@ -145,7 +145,7 @@ final class AdminLayoutTest extends AbstractLayoutTestCase
         $html = $this->renderRow($view);
 
         static::assertStringContainsString(
-            '<div id="sonata-ba-field-container-name" class="form-group">',
+            '<div id="sonata-ba-field-container-name" class="form-group mb-3 row">',
             $html
         );
     }
@@ -160,7 +160,7 @@ final class AdminLayoutTest extends AbstractLayoutTestCase
         $html = $this->renderRow($view);
 
         static::assertStringContainsString(
-            '<div id="sonata-ba-field-container-name" class="form-group has-error">',
+            '<div id="sonata-ba-field-container-name" class="form-group mb-3 row has-error">',
             $html
         );
     }
@@ -213,7 +213,7 @@ final class AdminLayoutTest extends AbstractLayoutTestCase
         $html = $this->renderRow($view);
 
         static::assertStringContainsString(
-            '<div class="foo form-group" data-value="bar" id="sonata-ba-field-container-name">',
+            '<div class="foo form-group mb-3 row" data-value="bar" id="sonata-ba-field-container-name">',
             $html
         );
     }

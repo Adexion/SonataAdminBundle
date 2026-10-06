@@ -802,7 +802,7 @@ final class RenderElementExtensionTest extends TestCase
             ],
             [
                 '<td class="sonata-ba-list-field sonata-ba-list-field-boolean" objectId="12345">
-                    <span class="label label-success">yes</span>
+                    <span class="badge text-bg-success">yes</span>
                 </td>',
                 FieldDescriptionInterface::TYPE_BOOLEAN,
                 true,
@@ -810,7 +810,7 @@ final class RenderElementExtensionTest extends TestCase
             ],
             [
                 '<td class="sonata-ba-list-field sonata-ba-list-field-boolean" objectId="12345">
-                    <span class="label label-danger">no</span>
+                    <span class="badge text-bg-danger">no</span>
                 </td>',
                 FieldDescriptionInterface::TYPE_BOOLEAN,
                 false,
@@ -818,7 +818,7 @@ final class RenderElementExtensionTest extends TestCase
             ],
             [
                 '<td class="sonata-ba-list-field sonata-ba-list-field-boolean" objectId="12345">
-                    <span class="label label-danger">no</span>
+                    <span class="badge text-bg-danger">no</span>
                 </td>',
                 FieldDescriptionInterface::TYPE_BOOLEAN,
                 null,
@@ -836,7 +836,7 @@ final class RenderElementExtensionTest extends TestCase
                             data-url="/core/set-object-field-value?_sonata_admin=sonata_admin_foo_service&amp;context=list&amp;field=fd_name&amp;objectId=12345"
                             data-source="[{value: 0, text: 'no'},{value: 1, text: 'yes'}]"
                         >
-                            <span class="label label-success">yes</span>
+                            <span class="badge text-bg-success">yes</span>
                         </span>
                     </td>
                     EOT,
@@ -856,7 +856,7 @@ final class RenderElementExtensionTest extends TestCase
                             data-url="/core/set-object-field-value?_sonata_admin=sonata_admin_foo_service&amp;context=list&amp;field=fd_name&amp;objectId=12345"
                             data-source="[{value: 0, text: 'no'},{value: 1, text: 'yes'}]"
                         >
-                        <span class="label label-danger">no</span> </span>
+                        <span class="badge text-bg-danger">no</span> </span>
                     </td>
                     EOT,
                 FieldDescriptionInterface::TYPE_BOOLEAN,
@@ -874,7 +874,7 @@ final class RenderElementExtensionTest extends TestCase
                             data-pk="12345"
                             data-url="/core/set-object-field-value?_sonata_admin=sonata_admin_foo_service&amp;context=list&amp;field=fd_name&amp;objectId=12345"
                             data-source="[{value: 0, text: 'no'},{value: 1, text: 'yes'}]" >
-                            <span class="label label-danger">no</span> </span>
+                            <span class="badge text-bg-danger">no</span> </span>
                     </td>
                     EOT,
                 FieldDescriptionInterface::TYPE_BOOLEAN,
@@ -1634,20 +1634,20 @@ final class RenderElementExtensionTest extends TestCase
                 ['safe' => false, 'inline' => true],
             ],
             [
-                '<th>Data</th> <td><span class="label label-success">yes</span></td>',
+                '<th>Data</th> <td><span class="badge text-bg-success">yes</span></td>',
                 FieldDescriptionInterface::TYPE_BOOLEAN,
                 true,
                 [],
             ],
             [
-                '<th>Data</th> <td><span class="label label-danger">yes</span></td>',
+                '<th>Data</th> <td><span class="badge text-bg-danger">yes</span></td>',
                 FieldDescriptionInterface::TYPE_BOOLEAN,
                 true,
                 ['inverse' => true],
             ],
-            ['<th>Data</th> <td><span class="label label-danger">no</span></td>', FieldDescriptionInterface::TYPE_BOOLEAN, false, []],
+            ['<th>Data</th> <td><span class="badge text-bg-danger">no</span></td>', FieldDescriptionInterface::TYPE_BOOLEAN, false, []],
             [
-                '<th>Data</th> <td><span class="label label-success">no</span></td>',
+                '<th>Data</th> <td><span class="badge text-bg-success">no</span></td>',
                 FieldDescriptionInterface::TYPE_BOOLEAN,
                 false,
                 ['inverse' => true],
