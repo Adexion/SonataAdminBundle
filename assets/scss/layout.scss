@@ -387,3 +387,33 @@ legend.sonata-ba-fieldset-collapsed-description + .sonata-ba-collapsed-fields {
     width: 100%;
   }
 }
+
+// Select2 replaces a <select> with a span carrying inline width:100%. It is not
+// .form-control/.form-select, so BS5 input-group flex sizing skips it and it
+// wraps onto its own line; size it like a field so it shares the row.
+.input-group > .select2-container {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 1% !important;
+}
+
+// AdminLTE's --lte-sidebar-menu-active-bg (rgba white .1) is barely visible
+.app-sidebar .sidebar-menu li.active > .nav-link:not(:hover) {
+  background-color: var(--bs-primary);
+  color: var(--lte-sidebar-menu-active-color, #fff);
+}
+
+i.nav-icon.far.fa-circle {
+  font-size: 0.6em;
+}
+
+// The list navbar renders actions and filters as separate .navbar-nav lists.
+// Pushing only the first one right keeps the whole group together on the right,
+// both with an actions list and without one (pager_type: simple).
+.navbar .navbar-collapse > .navbar-nav:first-of-type {
+  margin-left: auto !important;
+}
+
+.badge {
+  font-size: 0.85em;
+}

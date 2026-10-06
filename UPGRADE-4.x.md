@@ -14,9 +14,9 @@ no immediate template changes**. The compat layer will be removed in 5.0.
 
 The following are handled by the built-in compatibility layer:
 
-- Bootstrap 3 CSS classes: `.box`, `.box-header`, `.box-body`, `.box-footer`, `.box-title`,
-  `.pull-left`, `.pull-right`, `.btn-default`, `.label.label-*`, `.col-xs-*`,
-  `.no-padding`, `.nopadding`, `.sr-only`, `.hide`, `.hidden-xs/sm/md/lg`, `.visible-xs`
+- Bootstrap 3 CSS classes, e.g. `.box*`, `.pull-left/right`, `.btn-default`, `.label.label-*`,
+  `.col-xs-*`, `.input-group-addon`, `.panel*`, `.well`, `.badge-*`, `.hidden*`
+  (full list: `assets/scss/_compat.scss`)
 - Bootstrap 3 data attributes: `data-toggle`, `data-dismiss`, `data-target`, `data-parent`
   (rewritten to `data-bs-*` at runtime by the JS shim)
 - AdminLTE 2/3 sidebar toggle: `data-widget="push-menu"` → `data-lte-toggle="sidebar"`

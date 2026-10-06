@@ -7,8 +7,14 @@
  * file that was distributed with this source code.
  */
 
-// Bootstrap 5
-@import '~bootstrap/dist/css/bootstrap.css';
+// Brand colour is compiled into Bootstrap components (.btn-primary ships
+// `--bs-btn-bg: <hex>`, not var(--bs-primary)), so it has to be set in Sass —
+// overriding --bs-primary at runtime leaves buttons, pagination and focus rings blue.
+$primary: #3d6b99;
+$input-focus-border-color: #7da3c4;
+
+// AdminLTE 4 compiled from source; it imports the Bootstrap 5 SCSS (peer dependency)
+@import '~admin-lte/src/scss/adminlte';
 
 // Add Font Awesome 6 Free and the v4 compatibility layer
 // this layer should only be removed when we are sure we have replaced
@@ -26,15 +32,18 @@
 @import '~@fontsource/source-sans-pro/600-italic.css';
 @import '~@fontsource/source-sans-pro/700.css';
 
-// AdminLTE 4 (Bootstrap 5 compatible)
-@import '~admin-lte/dist/css/adminlte.css';
-
 // Only use sortable widget from jQuery UI library
 @import '~jquery-ui/themes/base/sortable.css';
 
 // Select2 with Bootstrap 5 theme
 @import '~select2/dist/css/select2.css';
-@import '~select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.css';
+
+// theme compiled from source so it follows $primary (the dist build is stock blue);
+// it was written for BS 5.2 and runs shade-color() on the border colour, which in
+// BS 5.3 is var(--bs-border-color) — hand it the hex instead
+$s2bs5-border-color: $gray-300;
+
+@import '~select2-bootstrap-5-theme/src/include-all';
 
 // SonataAdmin custom styles
 @import './styles';

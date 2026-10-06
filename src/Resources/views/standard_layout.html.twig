@@ -26,7 +26,8 @@ file that was distributed with this source code.
 {% set _use_icheck = sonata_config.getOption('use_icheck') %}
 
 <!DOCTYPE html>
-<html {% block html_attributes %}class="no-js"{% endblock %}>
+{# AdminLTE >= 4.2 follows the OS dark preference on its own; the admin theme is light-only #}
+<html data-lte-color-mode="off" {% block html_attributes %}class="no-js"{% endblock %}>
     <head>
         {% block meta_tags %}
             <meta http-equiv="X-UA-Compatible" content="IE=edge">

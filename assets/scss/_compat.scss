@@ -183,7 +183,7 @@
   font-size: 0.75em;
   font-weight: 700;
   line-height: 1;
-  padding: 0.25em 0.45em;
+  padding: 0.35em 0.65em;
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
@@ -224,6 +224,12 @@
 // ---------------------------------------------------------------------------
 
 .box {
+  // Form groups render .card-body/.card-header inside .box; their padding reads
+  // --bs-card-spacer-*, which Bootstrap declares only on .card. Without these
+  // the padding collapses to zero and fields touch the box edge.
+  --bs-card-spacer-x: 1rem;
+  --bs-card-spacer-y: 1rem;
+
   background-clip: border-box;
   background-color: var(--bs-card-bg, #fff);
   border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgb(0 0 0 / 12.5%));
@@ -328,11 +334,28 @@
 }
 
 .bg-purple {
-  background-color: #605ca8 !important;
+  background-color: #6f42c1 !important;
+  color: #fff;
 }
 
 .bg-red {
-  background-color: #dc3545 !important;
+  background-color: var(--bs-danger) !important;
+  color: #fff;
+}
+
+.bg-blue {
+  background-color: var(--bs-primary) !important;
+  color: #fff;
+}
+
+.bg-green {
+  background-color: var(--bs-success) !important;
+  color: #fff;
+}
+
+.bg-gray {
+  background-color: var(--bs-secondary-bg) !important;
+  color: #000;
 }
 
 .bg-teal {
@@ -347,16 +370,10 @@
 // Bootstrap 3 sr-only → visually-hidden
 // ---------------------------------------------------------------------------
 
+// .visually-hidden carries !important, so a later .control-label margin cannot unhide it
 .sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+  @extend .visually-hidden;
 }
 
 // ---------------------------------------------------------------------------
@@ -382,15 +399,22 @@
 // Bootstrap 3 form-group has-error state
 // ---------------------------------------------------------------------------
 
-.has-error {
-  .form-control,
-  .form-select {
-    border-color: var(--bs-danger);
-  }
+@each $state, $color in (error: danger, success: success, warning: warning) {
+  .has-#{$state} {
+    .form-control,
+    .form-select {
+      border-color: var(--bs-#{$color});
+    }
 
-  label {
-    color: var(--bs-danger);
+    .control-label,
+    .help-block {
+      color: var(--bs-#{$color});
+    }
   }
+}
+
+.has-error label {
+  color: var(--bs-danger);
 }
 
 // ---------------------------------------------------------------------------
@@ -403,4 +427,216 @@ div.radio {
   margin-bottom: 0.5rem;
   margin-top: 0.25rem;
   position: relative;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 classes with a 1:1 Bootstrap 5 equivalent
+// @extend copies the real BS5 rules, including contextual ones such as
+// `.input-group-lg > .input-group-text` or input-group border merging.
+// ---------------------------------------------------------------------------
+
+/* stylelint-disable scss/at-extend-no-missing-placeholder -- an alias has to copy the real BS5 class rules */
+
+.input-group-addon {
+  @extend .input-group-text;
+}
+
+.input-sm {
+  @extend .form-control-sm;
+}
+
+.form-control-static {
+  @extend .form-control-plaintext;
+}
+
+.img-responsive {
+  @extend .img-fluid;
+
+  display: block;
+}
+
+.text-right {
+  @extend .text-end;
+}
+
+.text-left {
+  @extend .text-start;
+}
+
+.text-bold {
+  @extend .fw-bold;
+}
+
+.hidden {
+  @extend .d-none;
+}
+
+@each $breakpoint in (sm, md, lg) {
+  @for $i from 1 through 11 {
+    .col-#{$breakpoint}-offset-#{$i} {
+      @extend .offset-#{$breakpoint}-#{$i};
+    }
+  }
+}
+
+@each $color in (primary, secondary, success, info, warning, danger) {
+  .badge-#{$color} {
+    @extend .text-bg-#{$color};
+  }
+}
+
+.badge-default {
+  @extend .text-bg-secondary;
+}
+
+/* stylelint-enable scss/at-extend-no-missing-placeholder */
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 panel / well → Bootstrap 5 card
+// ---------------------------------------------------------------------------
+
+// Explicit on purpose: @extend .card would also copy every AdminLTE card
+// variant (card-outline, collapsed-card, ...) onto .panel.
+.panel {
+  background-clip: border-box;
+  background-color: var(--bs-body-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  min-width: 0;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.panel-heading {
+  background-color: var(--bs-tertiary-bg);
+  border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+  border-top-left-radius: var(--bs-border-radius);
+  border-top-right-radius: var(--bs-border-radius);
+  padding: 0.5rem 1rem;
+}
+
+.panel-body {
+  padding: 1rem;
+}
+
+.panel-footer {
+  background-color: var(--bs-tertiary-bg);
+  border-top: var(--bs-border-width) solid var(--bs-border-color);
+  padding: 0.5rem 1rem;
+}
+
+.panel-title {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.well {
+  background-color: var(--bs-tertiary-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap 3 input-group pieces without a BS5 counterpart
+// ---------------------------------------------------------------------------
+
+// BS3 state colours on inline addons (e.g. margin status %): a bare
+// .alert-* without .alert only sets variables in BS5 and paints nothing.
+@each $color in (success, danger, warning) {
+  .input-group-addon.alert-#{$color} {
+    background-color: var(--bs-#{$color}-bg-subtle);
+    border-color: var(--bs-#{$color}-border-subtle);
+    color: var(--bs-#{$color}-text-emphasis);
+  }
+}
+
+.input-group-btn {
+  display: flex;
+
+  > .btn {
+    border-radius: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Other Bootstrap 3 / AdminLTE 2 leftovers
+// ---------------------------------------------------------------------------
+
+.btn-xs,
+.btn-group-xs > .btn {
+  border-radius: 0.2rem;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.4rem;
+}
+
+.control-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-horizontal .control-label {
+  text-align: right;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// BS5 dropdown-toggle draws its own caret via ::after
+.caret {
+  display: none;
+}
+
+// BS5 uses .btn-close (SVG); legacy markup still renders a text "×" inside .close
+.close {
+  background: transparent;
+  border: 0;
+  color: #000;
+  cursor: pointer;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.5;
+  padding: 0;
+  text-shadow: 0 1px 0 #fff;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.table-condensed {
+  --bs-table-cell-padding-x: 0.25rem;
+  --bs-table-cell-padding-y: 0.25rem;
+}
+
+.navbar-default {
+  background-color: var(--bs-tertiary-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  padding: 0.5rem 1rem;
+}
+
+.navbar-left {
+  margin-right: auto;
+}
+
+.navbar-right {
+  margin-left: auto;
+}
+
+.text-purple {
+  color: #6f42c1 !important;
+}
+
+.text-light-blue {
+  color: var(--bs-info) !important;
 }

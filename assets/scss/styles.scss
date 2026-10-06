@@ -11,74 +11,6 @@
  * SonataAdminBundle Theme based on AdminLTE 4 + Bootstrap 5
  */
 
-/* muted primary: replace Bootstrap's electric blue with a softer steel blue */
-:root {
-  --bs-primary: #3d6b99;
-  --bs-primary-rgb: 61, 107, 153;
-  --bs-link-color: #3d6b99;
-  --bs-link-color-rgb: 61, 107, 153;
-  --bs-link-hover-color: #315880;
-  --bs-link-hover-color-rgb: 49, 88, 128;
-  --bs-dropdown-link-active-bg: #3d6b99;
-  --bs-list-group-active-bg: #3d6b99;
-  --bs-list-group-active-border-color: #3d6b99;
-}
-
-.btn-outline-primary {
-  --bs-btn-color: #3d6b99;
-  --bs-btn-border-color: #3d6b99;
-  --bs-btn-hover-bg: #3d6b99;
-  --bs-btn-hover-border-color: #3d6b99;
-  --bs-btn-active-bg: #315880;
-  --bs-btn-active-border-color: #315880;
-  --bs-btn-disabled-color: #3d6b99;
-  --bs-btn-disabled-border-color: #3d6b99;
-  --bs-btn-focus-shadow-rgb: 61, 107, 153;
-}
-
-.nav-pills {
-  --bs-nav-pills-link-active-bg: #3d6b99;
-}
-
-.progress {
-  --bs-progress-bar-bg: #3d6b99;
-}
-
-.form-check-input:checked {
-  background-color: #3d6b99;
-  border-color: #3d6b99;
-}
-
-.form-check-input[type='checkbox']:indeterminate {
-  background-color: #3d6b99;
-  border-color: #3d6b99;
-}
-
-.form-check-input:focus,
-.form-control:focus,
-.form-select:focus {
-  border-color: #7da3c4;
-  box-shadow: 0 0 0 0.25rem rgb(61 107 153 / 25%);
-}
-
-.card-primary,
-.text-bg-primary {
-  --lte-card-variant-bg: #3d6b99;
-  --lte-card-variant-bg-rgb: 61, 107, 153;
-}
-
-.btn-primary {
-  --bs-btn-bg: #3d6b99;
-  --bs-btn-border-color: #3d6b99;
-  --bs-btn-hover-bg: #315880;
-  --bs-btn-hover-border-color: #2d527a;
-  --bs-btn-focus-shadow-rgb: 61, 107, 153;
-  --bs-btn-active-bg: #2d527a;
-  --bs-btn-active-border-color: #294d72;
-  --bs-btn-disabled-bg: #3d6b99;
-  --bs-btn-disabled-border-color: #3d6b99;
-}
-
 html {
   font-size: initial !important;
   min-height: 100%;
@@ -217,10 +149,7 @@ div {
 }
 
 .pagination .page-item.active .page-link {
-  --bs-pagination-active-bg: #3d6b99;
-  --bs-pagination-active-border-color: #3d6b99;
-
-  color: #fff;
+  color: var(--bs-pagination-active-color);
 }
 
 .dropdown-add .dropdown-menu > li > a {

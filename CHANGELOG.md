@@ -17,6 +17,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Sidebar toggle attribute changed from `data-widget="push-menu"` to `data-lte-toggle="sidebar"` (covered by JS shim)
 - All Bootstrap 3 class names migrated to Bootstrap 5 equivalents in all built-in templates
 - `admin_lte_skin_class` block now controls sidebar background class instead of body skin class
+- AdminLTE upgraded from 4.0.0-rc7 to 4.10 and compiled from SCSS together with Bootstrap (previously Bootstrap was shipped twice: its own dist CSS and inside AdminLTE's)
+- Brand colour is set in Sass (`$primary`), so it reaches buttons, pagination, focus rings and the Select2 theme; overriding `--bs-primary` at runtime no longer has full effect
+- `<html data-lte-color-mode="off">`: AdminLTE no longer switches to dark mode from the OS preference (the theme is light-only); the attribute sits outside the `html_attributes` block
+- Compatibility layer extended with further Bootstrap 3 classes (`.input-group-addon`, `.panel*`, `.well`, `.badge-*`, `.btn-xs`, `.col-*-offset-*` and more) — see `assets/scss/_compat.scss`
 
 ### Deprecated
 - `assets/scss/_compat.scss` — Bootstrap 3 / AdminLTE 2-3 CSS aliases, will be removed in 5.0
