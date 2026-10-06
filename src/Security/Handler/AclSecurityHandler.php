@@ -148,9 +148,7 @@ final class AclSecurityHandler implements AclSecurityHandlerInterface
         // retrieving the ACL for the object identity
         $objectIdentity = ObjectIdentity::fromDomainObject($object);
         $acl = $this->getObjectAcl($objectIdentity);
-        if (null === $acl) {
-            $acl = $this->createAcl($objectIdentity);
-        }
+        $acl ??= $this->createAcl($objectIdentity);
 
         // retrieving the security identity of the currently logged-in user
         $token = $this->tokenStorage->getToken();
@@ -187,7 +185,7 @@ final class AclSecurityHandler implements AclSecurityHandlerInterface
             $acls = $this->aclProvider->findAcls(iterator_to_array($oids), $sids);
         } catch (NotAllAclsFoundException $e) {
             /** @var \SplObjectStorage<ObjectIdentityInterface, MutableAclInterface> $acls */
-            $acls = $e->getPartialResult(); // @phpstan-ignore varTag.type
+            $acls = $e->getPartialResult();
         } catch (AclNotFoundException) { // if only one oid, this error is thrown
             /** @var \SplObjectStorage<ObjectIdentityInterface, MutableAclInterface> $acls */
             $acls = new \SplObjectStorage();
